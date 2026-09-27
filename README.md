@@ -13,17 +13,19 @@ In Simply Filter SMS, "Blocked" does not mean messages are thrown away into Junk
 
 ## Prerequisites
 
-1. Install **[Simply Filter SMS](https://apps.apple.com/us/app/simply-filter-sms/id1603222959)** from the App Store.
-2. Enable it in iOS: Open your iPhone **Settings** > **Messages** > **Text Message Filter**, and toggle on **Simply Filter SMS**.
+1. Install **[Simply Filter SMS](https://apps.apple.com/app/simply-filter-sms/id1535765534)** from the App Store.
+2. Enable it in iOS: Open your iPhone **Settings** > **Messages** > **Unknown & Spam**, and toggle on **Simply Filter SMS**.
 
 ## Installation
 
 ### Fastest Method (Direct iPhone Download)
 
-1. Tap to download: **[simply.sfsfilters](https://github.com/ooqua/simply-filter-rules/releases/download/v1.0.0/simply.sfsfilters)**
-2. Tap **Download** when prompted by Safari.
+1. Tap to download: **[simply.sfsfilters](https://github.com/ooqua/simply-sms-rules/releases/latest/download/simply.sfsfilters)**
+2. Tap **Download** when prompted by Safari or Chrome.
 3. Tap the **Downloads icon** (down arrow in Safari's address bar) and select `simply.sfsfilters`.
 4. Tap the **Share** button (box with upward arrow) and select **Simply Filter SMS** from the app list.
+
+> **Note:** If tapping the link displays text on your screen instead of downloading, press and hold (long-press) the link and select **Download Linked File**.
 
 ### Option 2: Download on PC and transfer to iPhone
 
@@ -34,7 +36,7 @@ In Simply Filter SMS, "Blocked" does not mean messages are thrown away into Junk
    - **USB Cable**: Transfer via Finder (macOS) or iTunes File Sharing (Windows) directly into the Files directory.
    - **Cloud Storage**: Upload to iCloud Drive or Google Drive, then open it in the Files app.
 3. Open Simply Filter SMS.
-4. Navigate to **Settings > Filter Tools > Import Filters**.
+4. Open the menu and navigate to **Filter Tools > Import Filters**.
 5. Select `simply.sfsfilters`.
 
 ## App Settings
@@ -60,9 +62,11 @@ Before or after importing, you can edit the whitelist placeholders at the top of
 
 ## Filter Coverage
 
-- **Brand Spoofing & Phishing URLs**: Flags lookalike domains (`usps-tracking.*`, `chase-verify.*`), IP address hosts, and abused TLDs (`.top`, `.xyz`, `.icu`, `.cfd`, `.sbs`, etc.). Generic `.app` and `.us` domains are excluded from blanket bans to prevent breaking legitimate services like Cash App or Zoom.
+- **Anti-Evasion & Obfuscation Defense**: Traps zero-width invisible spaces (`\u200B`), soft hyphens, mixed Latin-Cyrillic homoglyphs, and Punycode (`xn--`) domain spoofing.
+- **Brand Spoofing & Phishing URLs**: Flags lookalike domains (`usps-tracking.*`, `chase-verify.*`), deceptive subdomains (`chase.com-auth.*`), IP address hosts, and abused TLDs (`.top`, `.xyz`, `.icu`, `.cfd`, `.sbs`, `.zip`, etc.). Generic `.app` and `.us` domains are excluded from blanket bans to prevent breaking legitimate services like Cash App or Zoom.
 - **Fake Invoices & Callbacks**: Catches tech support and billing scams (Geek Squad, Norton, PayPal) that instruct the recipient to call phone numbers to dispute or cancel charges.
 - **Tolls & DMV Citations**: Flags toll enforcement spam (SunPass, FasTrak, E-ZPass, E-PASS) and fake DMV license suspension notices.
-- **Task & Job Scams**: Catches recruitment scams (hotel reviews, app ratings, merchant optimization) and requests to move conversations to Telegram or WhatsApp.
+- **Task & Job Scams**: Catches recruitment scams (hotel reviews, app ratings, merchant optimization, weekly/monthly remote wages) and requests to move conversations to Telegram or WhatsApp.
 - **Two-Factor Authentication**: Specifically targets social engineering attacks where someone demands that you send them a 6-digit code. Automated login codes containing disclaimers like "never share this code" are left alone.
 - **Bank Fraud Verification**: Does not block standard shortcode alerts asking for an interactive "YES" or "NO" reply.
+- **Political Spam**: Catches manipulative campaign blasts (`Save America`, `Grassroots`, `FEC deadline`, `PAC match`).
