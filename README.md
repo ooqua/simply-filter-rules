@@ -55,7 +55,7 @@ Before or after importing, you can edit the whitelist placeholders at the top of
 | Placeholder | Purpose | Example |
 | :--- | :--- | :--- |
 | `REPLACE_WITH_YOUR_NAME` | Whitelists your personal name or a specific keyword | `Alex` |
-| `REPLACE_WITH_YOUR_HOSPITAL_OR_CLINIC` | Whitelists your primary clinic, doctor, or dentist | `Evergreen Medical Group` |
+| `REPLACE_WITH_YOUR_HOSPITAL_OR_CLINIC` | Whitelists your primary clinic, doctor, or dentist | `CHOP` |
 | `REPLACE_WITH_YOUR_EMPLOYER` | Whitelists company interview updates | `Five Guys` |
 
 > **Note:** Do not use square brackets `[ ]` inside regex fields, as regex parses brackets as character classes.
