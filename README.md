@@ -20,7 +20,7 @@ In Simply Filter SMS, "Blocked" does not mean messages are thrown away into Junk
 
 ### Fastest Method (Direct iPhone Download)
 
-1. Tap to download: **[Download simply.sfsfilters](https://github.com/ooqua/simply-filter-rules/releases/download/v1.0.0/simply.sfsfilters)**
+1. Tap to download: **[simply.sfsfilters](https://github.com/ooqua/simply-filter-rules/releases/download/v1.0.0/simply.sfsfilters)**
 2. Tap **Download** when prompted by Safari.
 3. Tap the **Downloads icon** (down arrow in Safari's address bar) and select `simply.sfsfilters`.
 4. Tap the **Share** button (box with upward arrow) and select **Simply Filter SMS** from the app list.
