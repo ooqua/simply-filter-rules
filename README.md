@@ -13,14 +13,14 @@ In Simply Filter SMS, "Blocked" does not mean messages are thrown away into Junk
 
 ## Prerequisites
 
-1. Install **[Simply Filter SMS](https://apps.apple.com/app/simply-filter-sms/id1535765534)** from the App Store.
+1. Install **[Simply Filter SMS](https://apps.apple.com/us/app/simply-filter-sms/id1603222959)** from the App Store.
 2. Enable it in iOS: Open your iPhone **Settings** > **Messages** > **Text Message Filter**, and toggle on **Simply Filter SMS**.
 
 ## Installation
 
 ### Fastest Method (Direct iPhone Download)
 
-1. Tap to download: **[Download simply.sfsfilters](https://github.com/ooqua/simply-sms-rules/releases/latest/download/simply.sfsfilters)**
+1. Tap to download: **[Download simply.sfsfilters](https://github.com/ooqua/simply-filter-rules/releases/download/v1.0.0/simply.sfsfilters)**
 2. Tap **Download** when prompted by Safari.
 3. Tap the **Downloads icon** (down arrow in Safari's address bar) and select `simply.sfsfilters`.
 4. Tap the **Share** button (box with upward arrow) and select **Simply Filter SMS** from the app list.
