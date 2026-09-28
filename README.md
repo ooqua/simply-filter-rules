@@ -1,72 +1,53 @@
 # simply-filter-rules
 
-A filter configuration for the [Simply Filter SMS](https://github.com/adibendahan/SimplyFilterSMS-iOS) app on iOS. It filters phishing links, delivery scams, toll citations, and vishing callbacks while keeping legitimate 2FA codes and bank verification alerts functional.
+A comprehensive, hardened filter configuration for the [Simply Filter SMS](https://github.com/adibendahan/SimplyFilterSMS-iOS) app on iOS. It filters smishing links, delivery scams, toll citations, and marketing blasts while keeping legitimate 2FA codes, bank verification alerts, and personal texts functional.
 
 ## How Filtering Works
 
-In Simply Filter SMS, "Blocked" does not mean messages are thrown away into Junk. It means the message is **blocked from cluttering your Primary Inbox** and routed into its appropriate iOS folder:
+In iOS SMS filtering, messages are not deleted. Instead, they are kept out of your Primary Inbox and routed into their designated iOS folders:
 
-- **Primary Inbox (Allowed / Unmatched)**: Personal messages from friends, legitimate 2FA verification codes, bank fraud alerts (YES/NO replies), and your custom whitelist entries.
-- **Transactions**: Legitimate order receipts, shipping notifications, package tracking, and food delivery arrivals.
-- **Promotions**: Retail discount codes, sales reminders, and marketing campaigns.
-- **Junk**: Malicious smishing, package fee scams, toll road fraud, vishing callbacks, and unsolicited spam.
+- **Primary Inbox (Unmatched)**: Personal messages from friends, authentic two-factor authentication codes, and interactive bank verification alerts (YES/NO replies).
+- **Transactions**: Legitimate order receipts, shipping updates, package tracking, rideshare/delivery driver arrivals, and flight alerts.
+- **Promotions**: Retail discount codes, brand drops, abandoned cart reminders, and political campaign blasts.
+- **Junk**: Malicious smishing, package fee scams, toll road fraud, vishing callbacks, extortion, and unsolicited spam.
 
 ## Prerequisites
 
 1. Install **[Simply Filter SMS](https://apps.apple.com/us/app/simply-filter-sms/id1603222959)** from the App Store.
-2. Enable it in iOS: Open your iPhone **Settings** > **Messages** > **Unknown & Spam**, and toggle on **Simply Filter SMS**.
+2. Enable it in iOS: Open iPhone **Settings** > **Messages** > **Unknown & Spam**, and toggle on **Simply Filter SMS**.
 
 ## Installation
 
-### Fastest Method (Direct iPhone Download)
+### Direct iPhone Download (Recommended)
 
-1. Tap to download: **[simply.sfsfilters](https://github.com/ooqua/simply-filter-rules/releases/download/v1.0.1/simply.sfsfilters)**
-2. Tap **Download** when prompted by Safari or Chrome.
-3. Tap the **Downloads icon** (down arrow in Safari's address bar) and select `simply.sfsfilters`.
+1. Tap to download: **[simply.sfsfilters](https://github.com/ooqua/simply-filter-rules/releases/download/v1.0.2/simply.sfsfilters)**
+2. Tap **Download** when prompted by Safari.
+3. Tap the **Downloads icon** in Safari's address bar and select `simply.sfsfilters`.
 4. Tap the **Share** button (box with upward arrow) and select **Simply Filter SMS** from the app list.
 
-> **Note:** If tapping the link displays text on your screen instead of downloading, press and hold (long-press) the link and select **Download Linked File**.
+> **Note:** If tapping the link displays raw text instead of downloading, long-press the link and select **Download Linked File**.
 
-### Option 2: Download on PC and transfer to iPhone
+### Alternative: Import via Files or Computer
 
-1. Download `simply.sfsfilters` to your computer.
-2. Transfer the file to your iPhone using one of the following methods:
-   - **LocalSend**: Open LocalSend on your PC and iPhone. Send `simply.sfsfilters` and save it to the Files app.
-   - **AirDrop**: If using macOS, share `simply.sfsfilters` directly to your device.
-   - **USB Cable**: Transfer via Finder (macOS) or iTunes File Sharing (Windows) directly into the Files directory.
-   - **Cloud Storage**: Upload to iCloud Drive or Google Drive, then open it in the Files app.
-3. Open Simply Filter SMS.
-4. Open the menu and navigate to **Filter Tools > Import Filters**.
-5. Select `simply.sfsfilters`.
+1. Download `simply.sfsfilters` and save it to your iPhone's **Files** app (via AirDrop, iCloud Drive, or cable).
+2. Open Simply Filter SMS.
+3. Navigate to **Filter Tools > Import Filters** and select `simply.sfsfilters`.
 
 ## App Settings
 
-To prevent false positives and let the custom rules run cleanly, configure these settings in Simply Filter SMS:
+Configure these settings inside Simply Filter SMS to let the custom rules run cleanly:
 
 1. **Automatic Filtering (AI)**: Set to **OFF**.
-   - Disabling AI filtering ensures only your explicit regex rules make decisions, preventing the on-device model from unpredictably blocking legitimate messages.
-2. **Smart Filters**: Enable **only** the toggle for **Block Email Senders** (blocks text messages sent from email addresses).
+   - Prevents the on-device model from unpredictably overriding your explicit regex rules.
+2. **Smart Filters**: Enable **Block Email Senders** only.
    - Keep all other Smart Filters (like links, unknown senders, or emojis) turned off, as this ruleset already handles malicious patterns directly.
-
-## Configuration
-
-Before or after importing, you can edit the whitelist placeholders at the top of `simply.sfsfilters` in any text editor or inside the Simply Filter SMS app:
-
-| Placeholder | Purpose | Example |
-| :--- | :--- | :--- |
-| `REPLACE_WITH_YOUR_NAME` | Whitelists your personal name or a specific keyword | `Alex` |
-| `REPLACE_WITH_YOUR_HOSPITAL_OR_CLINIC` | Whitelists your primary clinic, doctor, or dentist | `CHOP` |
-| `REPLACE_WITH_YOUR_EMPLOYER` | Whitelists company interview updates | `Five Guys` |
-
-> **Note:** Do not use square brackets `[ ]` inside regex fields, as regex parses brackets as character classes.
 
 ## Filter Coverage
 
-- **Anti-Evasion & Obfuscation Defense**: Traps zero-width invisible spaces (`\u200B`), soft hyphens, mixed Latin-Cyrillic homoglyphs, and Punycode (`xn--`) domain spoofing.
-- **Brand Spoofing & Phishing URLs**: Flags lookalike domains (`usps-tracking.*`, `chase-verify.*`), deceptive subdomains (`chase.com-auth.*`), IP address hosts, and abused TLDs (`.top`, `.xyz`, `.icu`, `.cfd`, `.sbs`, `.zip`, etc.). Generic `.app` and `.us` domains are excluded from blanket bans to prevent breaking legitimate services like Cash App or Zoom.
-- **Fake Invoices & Callbacks**: Catches tech support and billing scams (Geek Squad, Norton, PayPal) that instruct the recipient to call phone numbers to dispute or cancel charges.
-- **Tolls & DMV Citations**: Flags toll enforcement spam (SunPass, FasTrak, E-ZPass, E-PASS) and fake DMV license suspension notices.
-- **Task & Job Scams**: Catches recruitment scams (hotel reviews, app ratings, merchant optimization, weekly/monthly remote wages) and requests to move conversations to Telegram or WhatsApp.
-- **Two-Factor Authentication**: Specifically targets social engineering attacks where someone demands that you send them a 6-digit code. Automated login codes containing disclaimers like "never share this code" are left alone.
-- **Bank Fraud Verification**: Does not block standard shortcode alerts asking for an interactive "YES" or "NO" reply.
-- **Political Spam**: Catches manipulative campaign blasts (`Save America`, `Grassroots`, `FEC deadline`, `PAC match`).
+The ruleset is designed to catch virtually any unsolicited text that does not come from a real human:
+
+- **Scams & Fraud**: Package delivery fee traps, highway tolls, DMV citations, fake court fines, bank account alerts, account recovery link theft, fake checks, and extortion threats.
+- **Spam & Marketing**: Retail discount codes, hype streetwear drops, locked storefront passwords, solar telemarketing, and political campaign blasts.
+- **Technical Evasion**: Zero-width invisible spaces, Punycode domains, raw IP hosts, and suspicious domain extensions.
+
+Legitimate personal conversations, authentic two-factor authentication login codes, and interactive bank verification alerts are left untouched in your Primary Inbox.
