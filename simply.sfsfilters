@@ -1,7 +1,15 @@
 {
   "appVersion" : "3.1.5",
-  "exportedAt" : "2026-09-28T22:30:00Z",
+  "exportedAt" : "2026-10-04T05:00:00Z",
   "filters" : [
+    {
+      "case" : "insensitive",
+      "folder" : "junk",
+      "matching" : "contains",
+      "target" : "sender",
+      "text" : "@",
+      "type" : "deny"
+    },
     {
       "case" : "insensitive",
       "folder" : "junk",
@@ -23,7 +31,7 @@
       "folder" : "junk",
       "matching" : "regex",
       "target" : "body",
-      "text" : "[\\uD835][\\uDC00-\\uDFFF]|[\\uFF01-\\uFF5E]{4,}|[\\u2460-\\u24FF]{4,}",
+      "text" : "[\\x{1D400}-\\x{1D7FF}]|[\\uFF01-\\uFF5E]{4,}|[\\u2460-\\u24FF]{4,}",
       "type" : "deny"
     },
     {
@@ -31,7 +39,7 @@
       "folder" : "junk",
       "matching" : "regex",
       "target" : "body",
-      "text" : "\\b(?=[A-Za-z0-9-]*[\\u0400-\\u04FF\\u0370-\\u03FF])(?=[\\u0400-\\u04FF\\u0370-\\u03FF]*[A-Za-z0-9-])[A-Za-z0-9-\\u0400-\\u04FF\\u0370-\\u03FF]{4,}\\b",
+      "text" : "\\b(?=[A-Za-z0-9-]*[\\u0400-\\u04FF\\u0370-\\u03FF])(?=[\\u0400-\\u04FF\\u0370-\\u03FF]*[A-Za-z0-9-])[A-Za-z0-9\\u0400-\\u04FF\\u0370-\\u03FF-]{4,}\\b",
       "type" : "deny"
     },
     {
@@ -63,7 +71,7 @@
       "folder" : "junk",
       "matching" : "regex",
       "target" : "body",
-      "text" : "\\b(?:google|bing|yahoo|youtube)\\.[a-z]{2,3}(?:\\.[a-z]{2})?/(?:url|ck/a|attribution_link)\\?[a-z0-9_=&%.-]*?(?:url|q|u)=(?:https?%3A%2F%2F|https?://)",
+      "text" : "\\b(?:google|bing|yahoo|youtube)\\.[a-z]{2,3}(?:\\.[a-z]{2})?/(?:url|ck/a|attribution_link)\\?[^\\s/]*?(?:url|q|u)=(?:https?%3A%2F%2F|https?://)",
       "type" : "deny"
     },
     {
@@ -71,7 +79,7 @@
       "folder" : "junk",
       "matching" : "regex",
       "target" : "body",
-      "text" : "(?:https?://)?(?:[a-z0-9-]+\\.)*(?:cutt\\.ly|tinyurl\\.com|tiny\\.one|bit\\.ly|ow\\.ly|rb\\.gy|is\\.gd|rebrand\\.ly|t\\.co|tiny\\.cc|shorturl\\.at|dub\\.sh|qr\\.codes|qrco\\.de|qr\\.de|s\\.id|clck\\.ru|v\\.gd|cleanuri\\.com|t\\.ly|shrtco\\.de|goo\\.su|cuty\\.io|kutt\\.it|bit\\.do|wa\\.me|v\\.ht|lnkd\\.in|lihi2?\\.me|lihi\\.(?:cc|io|biz)|onelink\\.me|b\\.link|page\\.link|short\\.gy|snip\\.ly)(?:/[^\\s]*)?",
+      "text" : "(?:https?://)?(?:[a-z0-9-]+\\.)*(?:cutt\\.ly|tinyurl\\.com|tiny\\.one|bit\\.ly|ow\\.ly|rb\\.gy|is\\.gd|rebrand\\.ly|t\\.co|tiny\\.cc|shorturl\\.at|dub\\.sh|dub\\.co|qr\\.codes|qrco\\.de|qr\\.de|s\\.id|clck\\.ru|v\\.gd|cleanuri\\.com|t\\.ly|shrtco\\.de|goo\\.su|cuty\\.io|kutt\\.it|bit\\.do|wa\\.me|v\\.ht|lnkd\\.in|lihi2?\\.me|lihi\\.(?:cc|io|biz)|onelink\\.me|b\\.link|page\\.link|short\\.gy|snip\\.ly|l\\.ead\\.me|qr-code\\.me|me-qr\\.com|flowcode\\.com|t2m\\.io|short\\.io|cutt\\.us|soo\\.gd|linktr\\.ee|chilp\\.it)(?:/[^\\s]*)?",
       "type" : "deny"
     },
     {
@@ -87,7 +95,7 @@
       "folder" : "junk",
       "matching" : "regex",
       "target" : "body",
-      "text" : "(?:https?://)?(?:[a-z0-9-]+\\.)+(?:vip|top|buzz|xyz|icu|lat|cfd|sbs|monster|pro|cam|link|store|shop|site|online|click|rest|work|cloud|zip|live|space|quest|fun|trycloudflare\\.com|ngrok-free\\.app|loca\\.lt|serveo\\.net|pagekite\\.me|localxpose\\.io)(?:/[^\\s]*)?",
+      "text" : "(?:https?://)?(?:[a-z0-9-]+\\.)+(?:vip|top|buzz|xyz|icu|lat|cfd|sbs|monster|pro|cam|link|store|shop|site|online|click|rest|work|cloud|zip|live|space|quest|fun|duckdns\\.org|hopto\\.org|zapto\\.org|ddns\\.net|trycloudflare\\.com|ngrok-free\\.app|loca\\.lt|serveo\\.net|pagekite\\.me|localxpose\\.io)(?:/[^\\s]*)?",
       "type" : "deny"
     },
     {
@@ -95,7 +103,7 @@
       "folder" : "junk",
       "matching" : "regex",
       "target" : "body",
-      "text" : "(?:\\b(?:login|sign-?in|verify|verification|account|suspended|locked|update|security|banking|wallet|seed\\s*phrase|kyc|ssn|toll|unpaid|invoice|refund|re-?activate)\\b[^\\r\\n]{0,40}(?:at|via|here|link)?[:\\s]+(?:https?://)?(?:[a-z0-9-]+\\.)*(?:forms\\.(?:gle|office\\.com)|canva\\.site|notion\\.site|carrd\\.co|vercel\\.app|pages\\.dev|workers\\.dev|web\\.app|firebaseapp\\.com|appspot\\.com|glitch\\.me|telegra\\.ph|heylink\\.me|linkr\\.bio|taplink\\.cc|beacons\\.(?:ai|page)|netlify\\.app|railway\\.app|supabase\\.co|render\\.com|onrender\\.com|fly\\.dev)|(?:https?://)?(?:[a-z0-9-]+\\.)*(?:forms\\.(?:gle|office\\.com)|canva\\.site|notion\\.site|carrd\\.co|vercel\\.app|pages\\.dev|workers\\.dev|web\\.app|firebaseapp\\.com|appspot\\.com|glitch\\.me|telegra\\.ph|heylink\\.me|linkr\\.bio|taplink\\.cc|beacons\\.(?:ai|page)|netlify\\.app|railway\\.app|supabase\\.co|render\\.com|onrender\\.com|fly\\.dev)[^\\r\\n]{0,40}\\b(?:login|sign-?in|verify|verification|account|suspended|locked|update|security|banking|wallet|seed\\s*phrase|kyc|ssn|toll|unpaid|invoice|refund|re-?activate)\\b)",
+      "text" : "(?:\\b(?:login|sign-?in|verify|verification|account|suspended|locked|update|security|banking|wallet|seed\\s*phrase|kyc|ssn|toll|unpaid|invoice|refund|re-?activate)\\b[\\s\\S]{0,50}(?:at|via|here|link)?[:\\s]+(?:https?://)?(?:[a-z0-9-]+\\.)*(?:forms\\.(?:gle|office\\.com)|canva\\.site|notion\\.site|carrd\\.co|vercel\\.app|pages\\.dev|workers\\.dev|web\\.app|firebaseapp\\.com|appspot\\.com|glitch\\.me|telegra\\.ph|heylink\\.me|linkr\\.bio|taplink\\.cc|beacons\\.(?:ai|page)|netlify\\.app|railway\\.app|supabase\\.co|render\\.com|onrender\\.com|fly\\.dev|r2\\.dev)|(?:https?://)?(?:[a-z0-9-]+\\.)*(?:forms\\.(?:gle|office\\.com)|canva\\.site|notion\\.site|carrd\\.co|vercel\\.app|pages\\.dev|workers\\.dev|web\\.app|firebaseapp\\.com|appspot\\.com|glitch\\.me|telegra\\.ph|heylink\\.me|linkr\\.bio|taplink\\.cc|beacons\\.(?:ai|page)|netlify\\.app|railway\\.app|supabase\\.co|render\\.com|onrender\\.com|fly\\.dev|r2\\.dev)[\\s\\S]{0,50}\\b(?:login|sign-?in|verify|verification|account|suspended|locked|update|security|banking|wallet|seed\\s*phrase|kyc|ssn|toll|unpaid|invoice|refund|re-?activate)\\b)",
       "type" : "deny"
     },
     {
@@ -103,7 +111,7 @@
       "folder" : "junk",
       "matching" : "regex",
       "target" : "body",
-      "text" : "(?:https?://)?(?:[a-z0-9-]+\\.)*(?:(?:usps|ups|fedex|dhl|ezpass|e-zpass|e-?pass|sunpass|fasttrak|chase|wellsfargo|citi|bankofamerica|bofa|capitalone|pnc|usbank|truist|tdbank|citizensbank|navyfederal|usaa|chime|cashapp|venmo|apple|appleid|apple(?:[-_]?wallet)?|icloud|netflix|coinbase|paypal|amazon|walmart|ebay|instagram|facebook|meta|tiktok|snapchat|discord|steam|roblox|poshmark)[-_]?(?:tracking|redelivery|delivery|post|parcel|package|update|verify|verification|login|secure|security|account|portal|support|service|bill|pay|alert|citation|fraud|resolution|case|help|fee|cancel|recall|refund|findmy|locate|copyright|appeal|nitro|creator|unban)|(?:tracking|redelivery|delivery|post|parcel|package|update|verify|verification|login|secure|security|account|portal|support|service|bill|pay|alert|citation|fraud|resolution|case|help|fee|cancel|recall|refund|findmy|locate|copyright|appeal|nitro|creator|unban)[-_]?(?:usps|ups|fedex|dhl|ezpass|e-zpass|e-?pass|sunpass|fasttrak|chase|wellsfargo|citi|bankofamerica|bofa|capitalone|pnc|usbank|truist|tdbank|citizensbank|navyfederal|usaa|chime|cashapp|venmo|apple|appleid|apple(?:[-_]?wallet)?|icloud|netflix|coinbase|paypal|amazon|walmart|ebay|instagram|facebook|meta|tiktok|snapchat|discord|steam|roblox|poshmark))[a-z0-9-]*\\.[a-z]{2,}",
+      "text" : "(?:https?://)?(?:[a-z0-9-]+\\.)*(?:(?:usps|ups|fedex|dhl|ezpass|e-zpass|e-?pass|sunpass|fasttrak|chase|wellsfargo|citi|bankofamerica|bofa|capitalone|pnc|usbank|truist|tdbank|citizensbank|navyfederal|usaa|chime|cashapp|venmo|apple|appleid|apple(?:[-_]?wallet)?|icloud|netflix|coinbase|paypal|amazon|walmart|ebay|att|verizon|tmobile|t-mobile|spectrum|xfinity|instagram|facebook|meta|tiktok|snapchat|discord|steam|roblox|poshmark)[-_]?(?:tracking|redelivery|delivery|post|parcel|package|update|verify|verification|login|secure|security|account|portal|support|service|bill|pay|alert|citation|fraud|resolution|case|help|fee|cancel|recall|refund|findmy|locate|copyright|appeal|nitro|creator|unban)|(?:tracking|redelivery|delivery|post|parcel|package|update|verify|verification|login|secure|security|account|portal|support|service|bill|pay|alert|citation|fraud|resolution|case|help|fee|cancel|recall|refund|findmy|locate|copyright|appeal|nitro|creator|unban)[-_]?(?:usps|ups|fedex|dhl|ezpass|e-zpass|e-?pass|sunpass|fasttrak|chase|wellsfargo|citi|bankofamerica|bofa|capitalone|pnc|usbank|truist|tdbank|citizensbank|navyfederal|usaa|chime|cashapp|venmo|apple|appleid|apple(?:[-_]?wallet)?|icloud|netflix|coinbase|paypal|amazon|walmart|ebay|att|verizon|tmobile|t-mobile|spectrum|xfinity|instagram|facebook|meta|tiktok|snapchat|discord|steam|roblox|poshmark))[a-z0-9-]*\\.[a-z]{2,}",
       "type" : "deny"
     },
     {
@@ -111,7 +119,7 @@
       "folder" : "junk",
       "matching" : "regex",
       "target" : "body",
-      "text" : "(?:https?://)?(?!(?:[a-z0-9-]+\\.)*(?:usps|ups|fedex|chase|wellsfargo|apple|netflix|coinbase|paypal|amazon)\\.com(?::|/|\\b|$))[a-z0-9.-]+\\.[a-z]{2,}/(?:[a-z0-9_/-]*/)?(?:usps|ups|fedex|chase|wellsfargo|appleid|netflix|coinbase|paypal)[-_]?(?:tracking|login|verify|signin|account|portal)",
+      "text" : "(?:https?://)?(?!(?:[a-z0-9-]+\\.)*(?:usps|ups|fedex|chase|wellsfargo|apple|netflix|coinbase|paypal|amazon|att|verizon|t-mobile)\\.com(?::|/|\\b|$))[a-z0-9.-]+\\.[a-z]{2,}/(?:[a-z0-9_/-]*/)?(?:usps|ups|fedex|chase|wellsfargo|appleid|netflix|coinbase|paypal|att|verizon)[-_]?(?:tracking|login|verify|signin|account|portal|bill)",
       "type" : "deny"
     },
     {
@@ -127,7 +135,7 @@
       "folder" : "junk",
       "matching" : "regex",
       "target" : "body",
-      "text" : "\\b(?:prize|reward|winner|claim|job|recruiter|hr|hiring)\\b[^\\r\\n]{0,60}[A-Za-z0-9._%+-]+@(gmail|yahoo|hotmail|outlook|proton|icloud|aol)\\.[a-z]{2,}\\b",
+      "text" : "\\b(?:prize|reward|winner|claim|job|recruiter|hr|hiring)\\b[\\s\\S]{0,60}[A-Za-z0-9._%+-]+@(gmail|yahoo|hotmail|outlook|proton|icloud|aol)\\.[a-z]{2,}\\b",
       "type" : "deny"
     },
     {
@@ -135,7 +143,7 @@
       "folder" : "junk",
       "matching" : "regex",
       "target" : "body",
-      "text" : "\\b(?:(?:lost|stolen)\\s+(?:iphone|ipad|apple\\s+watch|device|phone)|device\\s+(?:was\\s+)?located|view\\s+(?:live\\s+)?location\\s+on\\s+(?:icloud|find\\s*my))\\b[^\\r\\n]{0,70}(?:https?://|(?:[a-z0-9-]+\\.)+[a-z]{2,})",
+      "text" : "\\b(?:(?:lost|stolen)\\s+(?:iphone|ipad|apple\\s+watch|device|phone)|device\\s+(?:was\\s+)?located|view\\s+(?:live\\s+)?location\\s+on\\s+(?:icloud|find\\s*my))\\b[\\s\\S]{0,70}(?:https?://|(?:[a-z0-9-]+\\.)+[a-z]{2,})",
       "type" : "deny"
     },
     {
@@ -143,7 +151,7 @@
       "folder" : "junk",
       "matching" : "regex",
       "target" : "body",
-      "text" : "\\b(?:municipal\\s+court|county\\s+court|traffic\\s+court|administrative\\s+citation|citation\\s+infraction|unpaid\\s+infraction|court\\s+appearance)\\b[^\\r\\n]{0,70}(?:https?://|(?:[a-z0-9-]+\\.)+[a-z]{2,})",
+      "text" : "\\b(?:municipal\\s+court|county\\s+court|traffic\\s+court|administrative\\s+citation|citation\\s+infraction|unpaid\\s+infraction|court\\s+appearance)\\b[\\s\\S]{0,70}(?:https?://|(?:[a-z0-9-]+\\.)+[a-z]{2,})",
       "type" : "deny"
     },
     {
@@ -151,7 +159,7 @@
       "folder" : "junk",
       "matching" : "regex",
       "target" : "body",
-      "text" : "\\b(?:accidentally|by\\s+mistake|mistakenly)\\b[^\\r\\n]{0,40}\\b(?:sent|transferred|paid)\\s+(?:\\$\\s*\\d+|\\d+\\s*usd)\\b[^\\r\\n]{0,60}\\b(?:send\\s+(?:it\\s+)?back|return\\s+(?:it|the\\s+money)|refund)\\b",
+      "text" : "\\b(?:accidentally|by\\s+mistake|mistakenly)\\b[\\s\\S]{0,40}\\b(?:sent|transferred|paid)\\s+(?:\\$\\s*\\d+|\\d+\\s*usd)\\b[\\s\\S]{0,60}\\b(?:send\\s+(?:it\\s+)?back|return\\s+(?:it|the\\s+money)|refund)\\b[\\s\\S]{0,50}\\b(?:western\\s+union|wire|crypto|bitcoin|gift\\s*cards?|zelle|cash\\s*app|https?://)",
       "type" : "deny"
     },
     {
@@ -159,7 +167,7 @@
       "folder" : "junk",
       "matching" : "regex",
       "target" : "body",
-      "text" : "\\b(?:pegasus|compromised\\s+your\\s+(?:phone|device|camera)|recorded\\s+you\\s+(?:watching|pleasuring)|access\\s+to\\s+your\\s+(?:screen|webcam|camera)|dirty\\s+secrets|hacked\\s+your\\s+(?:phone|device)|(?:pay|send|transfer)\\s+\\$?\\d+[^\\r\\n]{0,40}(?:bitcoin|btc))\\b",
+      "text" : "\\b(?:pegasus|compromised\\s+your\\s+(?:phone|device|camera)|recorded\\s+you\\s+(?:watching|pleasuring)|access\\s+to\\s+your\\s+(?:screen|webcam|camera)|dirty\\s+secrets|hacked\\s+your\\s+(?:phone|device)|(?:pay|send|transfer)\\s+\\$?\\d+[\\s\\S]{0,40}(?:bitcoin|btc))\\b",
       "type" : "deny"
     },
     {
@@ -167,7 +175,7 @@
       "folder" : "junk",
       "matching" : "regex",
       "target" : "body",
-      "text" : "\\b(?:i'm\\s+in\\s+a\\s+(?:meeting|conference)|can't\\s+take\\s+calls?\\s+right\\s+now)\\b[^\\r\\n]{0,70}\\b(?:buy\\s+(?:some\\s+)?gift\\s*cards?|pick\\s+up\\s+gift\\s*cards?|apple\\s+gift\\s*cards?|steam\\s+(?:gift\\s*)?cards?|run\\s+(?:a\\s+quick\\s+)?errand\\b[^\\r\\n]{0,40}\\bgift\\s*cards?)\\b",
+      "text" : "\\b(?:i'm\\s+in\\s+a\\s+(?:meeting|conference)|can't\\s+take\\s+calls?\\s+right\\s+now)\\b[\\s\\S]{0,70}\\b(?:buy\\s+(?:some\\s+)?gift\\s*cards?|pick\\s+up\\s+gift\\s*cards?|apple\\s+gift\\s*cards?|steam\\s+(?:gift\\s*)?cards?|run\\s+(?:a\\s+quick\\s+)?errand\\b[\\s\\S]{0,40}\\bgift\\s*cards?)\\b",
       "type" : "deny"
     },
     {
@@ -175,7 +183,7 @@
       "folder" : "junk",
       "matching" : "regex",
       "target" : "body",
-      "text" : "\\b(?:zelle|venmo|cash\\s*app|paypal)\\b[^\\r\\n]{0,60}\\b(?:business\\s+account\\s+(?:limit|upgrade)|expand\\s+your\\s+account\\s+limit|send\\s+\\$?\\d+[^\\r\\n]{0,40}(?:to\\s+upgrade|to\\s+clear|to\\s+expand)|clearing\\s+fee|refundable\\s+fee)\\b",
+      "text" : "\\b(?:z[\\s.-]*e[\\s.-]*l[\\s.-]*l[\\s.-]*e|v[\\s.-]*e[\\s.-]*n[\\s.-]*m[\\s.-]*o|cash\\s*app|paypal)\\b[\\s\\S]{0,60}\\b(?:business\\s+account\\s+(?:limit|upgrade)|expand\\s+your\\s+account\\s+limit|send\\s+\\$?\\d+[\\s\\S]{0,40}(?:to\\s+upgrade|to\\s+clear|to\\s+expand)|clearing\\s+fee|refundable\\s+fee)\\b",
       "type" : "deny"
     },
     {
@@ -183,7 +191,7 @@
       "folder" : "junk",
       "matching" : "regex",
       "target" : "body",
-      "text" : "\\b(?:mystery\\s+shopper|secret\\s+shopper|evaluator)\\b[^\\r\\n]{0,60}\\b(?:deposit\\s+(?:the\\s+)?check|mobile\\s+deposit|keep\\s+\\$?\\d+[^\\r\\n]{0,30}(?:commission|fee)|wire\\s+the\\s+rest)\\b",
+      "text" : "\\b(?:mystery\\s+shopper|secret\\s+shopper|evaluator)\\b[\\s\\S]{0,60}\\b(?:deposit\\s+(?:the\\s+)?check|mobile\\s+deposit|keep\\s+\\$?\\d+[\\s\\S]{0,30}(?:commission|fee)|wire\\s+the\\s+rest)\\b",
       "type" : "deny"
     },
     {
@@ -191,7 +199,7 @@
       "folder" : "junk",
       "matching" : "regex",
       "target" : "body",
-      "text" : "\\b(?:ertc|erc)\\s+(?:tax\\s+)?credit\\b[^\\r\\n]{0,60}\\b(?:per\\s+employee|payroll\\s+tax\\s+refund|retention\\s+credit|claim\\s+your\\s+(?:erc|check)|filing\\s+deadline)\\b",
+      "text" : "\\b(?:ertc|erc)\\s+(?:tax\\s+)?credit\\b[\\s\\S]{0,60}\\b(?:per\\s+employee|payroll\\s+tax\\s+refund|retention\\s+credit|claim\\s+your\\s+(?:erc|check)|filing\\s+deadline)\\b",
       "type" : "deny"
     },
     {
@@ -199,7 +207,7 @@
       "folder" : "junk",
       "matching" : "regex",
       "target" : "body",
-      "text" : "\\b(?:wallet\\s+and\\s+passport\\s+were\\s+stolen|stranded\\s+at\\s+the\\s+airport|stuck\\s+in\\s+(?:spain|london|mexico|france|italy)|robbed\\s+while\\s+traveling)\\b[^\\r\\n]{0,60}\\b(?:wire|send\\s+money|western\\s+union|moneygram)\\b",
+      "text" : "\\b(?:wallet\\s+and\\s+passport\\s+were\\s+stolen|stranded\\s+at\\s+the\\s+airport|stuck\\s+in\\s+(?:spain|london|mexico|france|italy)|robbed\\s+while\\s+traveling)\\b[\\s\\S]{0,60}\\b(?:wire|send\\s+money|western\\s+union|moneygram)\\b",
       "type" : "deny"
     },
     {
@@ -215,7 +223,7 @@
       "folder" : "junk",
       "matching" : "regex",
       "target" : "body",
-      "text" : "\\b(?:cartel|hitman|sicario)\\b[^\\r\\n]{0,60}\\b(?:paid|hired|ordered)\\s+to\\s+(?:kill|eliminate|execute)\\s+you\\b|\\b(?:pay|send\\s+\\$?\\d+)\\s+or\\s+(?:we('re)?|i)\\s+will\\s+(?:kill|execute|slaughter)\\s+you\\b",
+      "text" : "\\b(?:cartel|hitman|sicario)\\b[\\s\\S]{0,60}\\b(?:paid|hired|ordered)\\s+to\\s+(?:kill|eliminate|execute)\\s+you\\b|\\b(?:pay|send\\s+\\$?\\d+)\\s+or\\s+(?:we('re)?|i)\\s+will\\s+(?:kill|execute|slaughter)\\s+you\\b",
       "type" : "deny"
     },
     {
@@ -239,7 +247,7 @@
       "folder" : "junk",
       "matching" : "regex",
       "target" : "body",
-      "text" : "\\b(?:safety\\s+recall\\s+notice|item\\s+you\\s+purchased\\b[^\\r\\n]{0,50}(?:recalled|safety\\s+standards)|affected\\s+orders\\s+have\\s+been\\s+(?:fully\\s+)?refunded|product\\s+recall\\s+notice)\\b",
+      "text" : "\\b(?:safety\\s+recall\\s+notice|item\\s+you\\s+purchased\\b[\\s\\S]{0,50}(?:recalled|safety\\s+standards)|affected\\s+orders\\s+have\\s+been\\s+(?:fully\\s+)?refunded|product\\s+recall\\s+notice)\\b",
       "type" : "deny"
     },
     {
@@ -255,7 +263,7 @@
       "folder" : "junk",
       "matching" : "regex",
       "target" : "body",
-      "text" : "\\b(?:cashing\\s+out|check\\s+your\\s+ranking|real\\s+shot\\s+at\\s+cashing\\s+out)\\b[^\\r\\n]{0,50}(?:https?://|\\bonelink\\b)",
+      "text" : "\\b(?:cashing\\s+out|check\\s+your\\s+ranking|real\\s+shot\\s+at\\s+cashing\\s+out)\\b[\\s\\S]{0,50}(?:https?://|\\bonelink\\b)",
       "type" : "deny"
     },
     {
@@ -263,7 +271,7 @@
       "folder" : "junk",
       "matching" : "regex",
       "target" : "body",
-      "text" : "\\b(?:geek\\s*squad|norton|mcafee|totalav)\\b[^\\r\\n]{0,50}(?:auto-?renew|subscription|invoice|debited|charged|protection|renewal)[^\\r\\n]{0,50}(?:call|dial|reach|phone|helpdesk|toll-?free|\\+?1[-\\s.]?\\(?\\d{3}\\)?)\\b",
+      "text" : "\\b(?:geek\\s*squad|norton|mcafee|totalav)\\b[\\s\\S]{0,50}(?:auto-?renew|subscription|invoice|debited|charged|protection|renewal)[\\s\\S]{0,50}(?:call|dial|reach|phone|helpdesk|toll-?free|\\+?1[-\\s.]?\\(?\\d{3}\\)?)\\b",
       "type" : "deny"
     },
     {
@@ -271,7 +279,7 @@
       "folder" : "junk",
       "matching" : "regex",
       "target" : "body",
-      "text" : "\\b(?:purchase\\s+of\\s+bitcoin|btc\\s+order\\s+processed|crypto\\s+token\\s+purchase)\\b[^\\r\\n]{0,50}(?:to\\s+(?:cancel|dispute|refund)|if\\s+(?:this\\s+was\\s+not\\s+you|unauthorized)|(?:call|dial|reach|phone)\\b)",
+      "text" : "\\b(?:purchase\\s+of\\s+bitcoin|btc\\s+order\\s+processed|crypto\\s+token\\s+purchase)\\b[\\s\\S]{0,50}(?:to\\s+(?:cancel|dispute|refund)|if\\s+(?:this\\s+was\\s+not\\s+you|unauthorized)|(?:call|dial|reach|phone)\\b)",
       "type" : "deny"
     },
     {
@@ -279,7 +287,7 @@
       "folder" : "junk",
       "matching" : "regex",
       "target" : "body",
-      "text" : "\\b(?:this\\s+is\\s+my\\s+new\\s+(?:temporary\\s+)?number|dropped\\s+my\\s+phone\\s+in\\s+(?:the\\s+)?water)\\b[^\\r\\n]{0,60}\\b(?:wire\\s+transfer|gift\\s+cards?|western\\s+union|send\\s+(?:me\\s+)?money)\\b",
+      "text" : "(?!(?:[\\s\\S]*?\\breply\\s+(?:yes|no|[12]|y|n)\\b))\\b(?:account\\s+(?:has\\s+been\\s+)?flagged\\s+for\\s+suspicious\\s+activity|unauthorized\\s+(?:charge|transaction|transfer)\\s+(?:detected|flagged))\\b[\\s\\S]{0,60}\\b(?:call\\s+(?:us|immediately|now|support)|dial)\\b",
       "type" : "deny"
     },
     {
@@ -287,7 +295,7 @@
       "folder" : "junk",
       "matching" : "regex",
       "target" : "body",
-      "text" : "(?:\\b(?:t[0o]ll|turnpike|fasttrak|ezpass|e-zpass|e-pass|sunpass|txtag|tollway|ezdrive|paybyplate|pikepass|i-pass|good\\s*to\\s*go|driveez|peachpass|express\\s*lanes?|riverlink|k-tag|leeway|ez\\s*tag|quick\\s*pass|ntta|hctra|platepass)\\b[^\\r\\n]{0,70}\\b(?:unpaid|overdue|outstanding|balance|invoice|fee|fine|penalty|license|suspension|violation|transit\\s+fee|toll\\s+charge|unsettled|late\\s+charges?|assessment|registration\\s+hold)\\b|\\b(?:unpaid|overdue|outstanding|balance|invoice|fee|fine|penalty|license|suspension|violation|transit\\s+fee|toll\\s+charge|unsettled|late\\s+charges?|assessment|registration\\s+hold)\\b[^\\r\\n]{0,70}\\b(?:t[0o]ll|turnpike|fasttrak|ezpass|e-zpass|e-pass|sunpass|txtag|tollway|ezdrive|paybyplate|pikepass|i-pass|good\\s*to\\s*go|driveez|peachpass|express\\s*lanes?|riverlink|k-tag|leeway|ez\\s*tag|quick\\s*pass|ntta|hctra|platepass)\\b)[^\\r\\n]{0,140}(?:https?://)?(?!(?:[a-z0-9-]+\\.)*(?:sunpass|ezpass|fasttrak|txtag|illinoistollway|pikepass|riverlink|ezpassnj|ezpassva|bayareafastrak|tollway)\\.com(?::|/|\\b|$))(?:[a-z0-9-]+\\.)+[a-z]{2,}",
+      "text" : "\\b(?:this\\s+is\\s+my\\s+new\\s+(?:temporary\\s+)?number|dropped\\s+my\\s+phone\\s+in\\s+(?:the\\s+)?water)\\b[\\s\\S]{0,60}\\b(?:wire\\s+transfer|gift\\s+cards?|western\\s+union|send\\s+(?:me\\s+)?money)\\b",
       "type" : "deny"
     },
     {
@@ -295,7 +303,7 @@
       "folder" : "junk",
       "matching" : "regex",
       "target" : "body",
-      "text" : "\\b(?:dmv|department\\s+of\\s+motor\\s+vehicles|dept\\s+of\\s+motor\\s+vehicles|driver(?:'?s)?\\s+license)\\b[^\\r\\n]{0,60}\\b(?:suspension|suspended|revocation|revoked|citation|unpaid|traffic\\s+violation|registration\\s+hold)\\b[^\\r\\n]{0,120}(?:https?://|(?:[a-z0-9-]+\\.)+[a-z]{2,})",
+      "text" : "(?:\\b(?:t[0o]ll|turnpike|fasttrak|e[\\s-]*z[\\s-]*pass|e[\\s-]*pass|s\\s*u\\s*n\\s*p\\s*a\\s*s\\s*s|sunpass|txtag|tollway|ezdrive|paybyplate|pikepass|i-pass|good\\s*to\\s*go|driveez|peachpass|express\\s*lanes?|riverlink|k-tag|leeway|ez\\s*tag|quick\\s*pass|ntta|hctra|platepass|thetollroads|tollroads|myeasytrac|tollbyplate|e-toll|tollpass|fastpass)\\b[\\s\\S]{0,70}\\b(?:unpaid|overdue|outstanding|balance|invoice|fee|fine|penalty|license|suspension|violation|transit\\s+fee|toll\\s+charge|unsettled|late\\s+charges?|assessment|registration\\s+hold)\\b|\\b(?:unpaid|overdue|outstanding|balance|invoice|fee|fine|penalty|license|suspension|violation|transit\\s+fee|toll\\s+charge|unsettled|late\\s+charges?|assessment|registration\\s+hold)\\b[\\s\\S]{0,70}\\b(?:t[0o]ll|turnpike|fasttrak|e[\\s-]*z[\\s-]*pass|e[\\s-]*pass|s\\s*u\\s*n\\s*p\\s*a\\s*s\\s*s|sunpass|txtag|tollway|ezdrive|paybyplate|pikepass|i-pass|good\\s*to\\s*go|driveez|peachpass|express\\s*lanes?|riverlink|k-tag|leeway|ez\\s*tag|quick\\s*pass|ntta|hctra|platepass|thetollroads|tollroads|myeasytrac|tollbyplate|e-toll|tollpass|fastpass)\\b)[\\s\\S]{0,140}(?:https?://)?(?!(?:[a-z0-9-]+\\.)*(?:sunpass|ezpass|fasttrak|txtag|illinoistollway|pikepass|riverlink|ezpassnj|ezpassva|bayareafastrak|tollway|thetollroads|paturnpike|ezdrivema|e-zpassny)\\.(?:com|org)(?::|/|\\b|$))(?:[a-z0-9-]+\\.)+[a-z]{2,}",
       "type" : "deny"
     },
     {
@@ -303,7 +311,7 @@
       "folder" : "junk",
       "matching" : "regex",
       "target" : "body",
-      "text" : "\\b(?:speeding\\s+camera|traffic\\s+camera|automated\\s+camera\\s+zone|failure\\s+to\\s+appear|bench\\s+warrant|missed\\s+(?:federal\\s+)?jury\\s+duty|civil\\s+penalty\\s+notice)\\b[^\\r\\n]{0,60}\\b(?:citation|fine|warrant|suspension|court|pay\\s+(?:the\\s+)?fine)\\b[^\\r\\n]{0,120}(?:https?://|(?:[a-z0-9-]+\\.)+[a-z]{2,})",
+      "text" : "\\b(?:dmv|department\\s+of\\s+motor\\s+vehicles|dept\\s+of\\s+motor\\s+vehicles|driver(?:'?s)?\\s+license)\\b[\\s\\S]{0,60}\\b(?:suspension|suspended|revocation|revoked|citation|unpaid|traffic\\s+violation|registration\\s+hold)\\b[\\s\\S]{0,120}(?:https?://|(?:[a-z0-9-]+\\.)+[a-z]{2,})",
       "type" : "deny"
     },
     {
@@ -311,7 +319,7 @@
       "folder" : "junk",
       "matching" : "regex",
       "target" : "body",
-      "text" : "\\b(?:parking\\s+(?:enforcement|ticket|citation|violation|meter)|unpaid\\s+parking)\\b[^\\r\\n]{0,50}(?:citation|settle|court|fine|pay|penalty|vehicle)[^\\r\\n]{0,120}(?:https?://|(?:[a-z0-9-]+\\.)+[a-z]{2,})",
+      "text" : "\\b(?:speeding\\s+camera|traffic\\s+camera|automated\\s+camera\\s+zone|failure\\s+to\\s+appear|bench\\s+warrant|missed\\s+(?:federal\\s+)?jury\\s+duty|civil\\s+penalty\\s+notice)\\b[\\s\\S]{0,60}\\b(?:citation|fine|warrant|suspension|court|pay\\s+(?:the\\s+)?fine)\\b[\\s\\S]{0,120}(?:https?://|(?:[a-z0-9-]+\\.)+[a-z]{2,})",
       "type" : "deny"
     },
     {
@@ -319,7 +327,7 @@
       "folder" : "junk",
       "matching" : "regex",
       "target" : "body",
-      "text" : "\\b(?:package|parcel|shipment|delivery|consignment|usps|ups|fedex|dhl|evri|ontrac|lasership)\\b[^\\r\\n]{0,70}\\b(?:held|halted|stopped|suspended|cancelled|undeliverable|cannot\\s+be\\s+delivered|unable\\s+to\\s+deliver|incomplete\\s+address|incorrect\\s+address|missing\\s+(?:apartment|unit|house|street|number)|confirm\\s+(?:your\\s+)?address|update\\s+(?:your\\s+)?address|redelivery)\\b[^\\r\\n]{0,140}(?:https?://)?(?!(?:[a-z0-9-]+\\.)*(?:usps|ups|fedex|dhl)\\.com(?::|/|\\b|$))(?:[a-z0-9-]+\\.)+[a-z]{2,}",
+      "text" : "\\b(?:parking\\s+(?:enforcement|ticket|citation|violation|meter)|unpaid\\s+parking)\\b[\\s\\S]{0,50}(?:citation|settle|court|fine|pay|penalty|vehicle)[\\s\\S]{0,120}(?:https?://|(?:[a-z0-9-]+\\.)+[a-z]{2,})",
       "type" : "deny"
     },
     {
@@ -327,7 +335,7 @@
       "folder" : "junk",
       "matching" : "regex",
       "target" : "body",
-      "text" : "\\b(?:held\\s+at\\s+(?:customs|warehouse)|clearance\\s+fee\\s+required|unpaid\\s+postage\\s+fee|customs\\s+(?:duty|tax|clearance)\\s+fee)\\b",
+      "text" : "\\b(?:package|parcel|shipment|delivery|consignment|u\\.?\\s*s\\.?\\s*p\\.?\\s*s|u\\.?\\s*p\\.?\\s*s|f\\.?\\s*e\\.?\\s*d\\.?\\s*e\\.?\\s*x|d\\.?\\s*h\\.?\\s*l|evri|ontrac|lasership)\\b[\\s\\S]{0,70}\\b(?:held|halted|stopped|suspended|cancelled|undeliverable|cannot\\s+be\\s+delivered|unable\\s+to\\s+deliver|awaiting\\s+(?:action|confirmation|delivery)|incomplete\\s+address|incorrect\\s+address|invalid\\s+street|missing\\s+(?:apartment|unit|house|street|number)|confirm\\s+(?:your\\s+)?address|update\\s+(?:your\\s+)?address|redelivery)\\b[\\s\\S]{0,140}(?:https?://)?(?!(?:[a-z0-9-]+\\.)*(?:usps|ups|fedex|dhl)\\.com(?::|/|\\b|$))(?:[a-z0-9-]+\\.)+[a-z]{2,}",
       "type" : "deny"
     },
     {
@@ -335,7 +343,7 @@
       "folder" : "junk",
       "matching" : "regex",
       "target" : "body",
-      "text" : "\\b(?:(?:daily|weekly|monthly)\\s+(?:salary|wage|pay)|earn\\s+(?:\\$\\s*\\d+|\\d+\\s*(?:usd|usdt))[^\\r\\n]{0,30}(?:daily|weekly|monthly|per\\s+(?:day|week|month|hour)|[\\/](?:hr|wk|mo|day))|salary\\s+ranges?\\s+from\\s*\\$|pay\\s+is\\s+\\$\\s*\\d+\\s*(?:-|to|\\/)\\s*\\$?\\d*\\s*[\\/]\\s*(?:hr|wk|mo|hour|week|month))\\b[^\\r\\n]{0,40}\\b(?:work\\s+from\\s+home|remote|tasks?|daily\\s+payout)\\b",
+      "text" : "\\b(?:held\\s+at\\s+(?:customs|warehouse|depot|hub|facility)|clearance\\s+fee\\s+required|unpaid\\s+postage\\s+fee|customs\\s+(?:duty|tax|clearance)\\s+fee)\\b",
       "type" : "deny"
     },
     {
@@ -343,7 +351,7 @@
       "folder" : "junk",
       "matching" : "regex",
       "target" : "body",
-      "text" : "\\b(?:job|position|hiring|remote|earn|salary|work\\s+from\\s+home|daily\\s+pay|tasks?)\\b[^\\r\\n]{0,50}\\bmust\\s+be\\s+at\\s+least\\s+(?:18|19|20|21|22|23|24|25)\\s+years?\\s+old\\b",
+      "text" : "\\b(?:(?:daily|weekly|monthly)\\s+(?:salary|wage|pay)|earn\\s+(?:\\$\\s*\\d+|\\d+\\s*(?:usd|usdt))[\\s\\S]{0,30}(?:daily|weekly|monthly|per\\s+(?:day|week|month|hour)|[\\/](?:hr|wk|mo|day))|salary\\s+ranges?\\s+from\\s*\\$|pay\\s+is\\s+\\$\\s*\\d+\\s*(?:-|to|\\/)\\s*\\$?\\d*\\s*[\\/]\\s*(?:hr|wk|mo|hour|week|month))\\b[\\s\\S]{0,40}\\b(?:work\\s+from\\s+home|remote|tasks?|daily\\s+payout)\\b",
       "type" : "deny"
     },
     {
@@ -351,7 +359,31 @@
       "folder" : "junk",
       "matching" : "regex",
       "target" : "body",
-      "text" : "\\b(?:temu|amazon|shein|tiktok|ebay|shopee)\\s+(?:merchants?|talent\\s+team|mall\\s+service)\\b[^\\r\\n]{0,50}\\b(?:part-?time|salary|commission|tasks?|hiring)\\b",
+      "text" : "\\b(?:job|position|hiring|remote|earn|salary|work\\s+from\\s+home|daily\\s+pay|tasks?)\\b[\\s\\S]{0,50}\\bmust\\s+be\\s+at\\s+least\\s+(?:18|19|20|21|22|23|24|25)\\s+years?\\s+old\\b",
+      "type" : "deny"
+    },
+    {
+      "case" : "insensitive",
+      "folder" : "junk",
+      "matching" : "regex",
+      "target" : "body",
+      "text" : "\\b(?:pre-?approved|guaranteed\\s+approval)\\b[\\s\\S]{0,50}\\b(?:personal\\s+loan|cash\\s+advance|payday\\s+loan|no\\s+credit\\s+check)\\b",
+      "type" : "deny"
+    },
+    {
+      "case" : "insensitive",
+      "folder" : "junk",
+      "matching" : "regex",
+      "target" : "body",
+      "text" : "\\binvest\\s+\\$?\\d+\\b[\\s\\S]{0,40}\\b(?:get|earn|receive|make)\\s+\\$?\\d+\\b[\\s\\S]{0,40}\\b(?:next\\s+week|guaranteed|daily|profit|roi|crypto|returns?)\\b",
+      "type" : "deny"
+    },
+    {
+      "case" : "insensitive",
+      "folder" : "junk",
+      "matching" : "regex",
+      "target" : "body",
+      "text" : "\\b(?:temu|amazon|shein|tiktok|ebay|shopee)\\s+(?:merchants?|talent\\s+team|mall\\s+service)\\b[\\s\\S]{0,50}\\b(?:part-?time|salary|commission|tasks?|hiring)\\b",
       "type" : "deny"
     },
     {
@@ -367,7 +399,7 @@
       "folder" : "junk",
       "matching" : "regex",
       "target" : "body",
-      "text" : "\\b(?:remote\\s+job|work\\s+from\\s+home|part-?time\\s+job|daily\\s+salary)\\b[^\\r\\n]{0,50}\\b(?:reviewing\\s+hotels|hotel\\s+reviews?|app\\s+store\\s+optimization|aso\\s+specialist|liking\\s+(?:youtube|tiktok)\\s+videos|google\\s+maps?\\s+reviews?|rate\\s+(?:movies|films))\\b",
+      "text" : "\\b(?:remote\\s+job|work\\s+from\\s+home|part-?time\\s+job|daily\\s+salary)\\b[\\s\\S]{0,50}\\b(?:reviewing\\s+hotels|hotel\\s+reviews?|app\\s+store\\s+optimization|aso\\s+specialist|liking\\s+(?:youtube|tiktok)\\s+videos|google\\s+maps?\\s+reviews?|rate\\s+(?:movies|films))\\b",
       "type" : "deny"
     },
     {
@@ -375,7 +407,7 @@
       "folder" : "junk",
       "matching" : "regex",
       "target" : "body",
-      "text" : "\\b(?:t\\.me/(?!login\\b)|telegram(?:\\.me)?/(?!login\\b)|telegram\\s*:\\s*@\\w+|signal\\s*:\\s*@\\w+|add\\s+my\\s+line\\s+id|(?:whatsapp|whats-app)\\s*:\\s*\\+?\\d{8,})\\b",
+      "text" : "\\b(?:t\\.me/(?!login\\b)|telegram(?:\\.me)?/(?!login\\b)|telegram\\s*:\\s*@\\w+|signal\\s*:\\s*@\\w+|add\\s+my\\s+line\\s+id|(?:w[\\s.-]*h[\\s.-]*a[\\s.-]*t[\\s.-]*s[\\s.-]*a[\\s.-]*p[\\s.-]*p|whats-app)\\s*:\\s*\\+?\\d{8,})\\b",
       "type" : "deny"
     },
     {
@@ -399,7 +431,7 @@
       "folder" : "junk",
       "matching" : "regex",
       "target" : "body",
-      "text" : "\\b(?:metamask|phantom|trust\\s*wallet)\\s+(?:node|wallet)\\b[^\\r\\n]{0,50}\\b(?:out\\s+of\\s+sync|re-?validate|resynchroniz|drain|prevent\\s+loss)\\b",
+      "text" : "\\b(?:metamask|phantom|trust\\s*wallet)\\s+(?:node|wallet)\\b[\\s\\S]{0,50}\\b(?:out\\s+of\\s+sync|re-?validate|resynchroniz|drain|prevent\\s+loss)\\b",
       "type" : "deny"
     },
     {
@@ -407,7 +439,7 @@
       "folder" : "junk",
       "matching" : "regex",
       "target" : "body",
-      "text" : "\\b(?:class\\s+action|consumer\\s+privacy|settlement\\s+claim|eligible\\s+for\\s+(?:a\\s+)?(?:cash\\s+)?payout)\\b[^\\r\\n]{0,50}(?:claim|payout|settlement|fund|compensation)[^\\r\\n]{0,60}(?:https?://|(?:[a-z0-9-]+\\.)+[a-z]{2,})",
+      "text" : "\\b(?:class\\s+action|consumer\\s+privacy|settlement\\s+claim|eligible\\s+for\\s+(?:a\\s+)?(?:cash\\s+)?payout)\\b[\\s\\S]{0,50}(?:claim|payout|settlement|fund|compensation)[\\s\\S]{0,60}(?:https?://|(?:[a-z0-9-]+\\.)+[a-z]{2,})",
       "type" : "deny"
     },
     {
@@ -415,7 +447,7 @@
       "folder" : "junk",
       "matching" : "regex",
       "target" : "body",
-      "text" : "(?:\\b(?:irs\\s+(?:alert|notice|refund)|tax\\s+(?:rebate|refund|debt\\s+settlement|lien)|internal\\s+revenue\\s+service)\\b[^\\r\\n]{0,50}(?:claim|deposit|\\$\\s*\\d+|call|settle)|\\b(?:claim|pending)\\s+(?:your\\s+)?(?:irs|tax)\\s+(?:refund|rebate|settlement)\\b)",
+      "text" : "(?:\\b(?:irs\\s+(?:alert|notice|refund)|tax\\s+(?:rebate|refund|debt\\s+settlement|lien)|internal\\s+revenue\\s+service)\\b[\\s\\S]{0,50}(?:claim|deposit|\\$\\s*\\d+|call|settle)|\\b(?:claim|pending)\\s+(?:your\\s+)?(?:irs|tax)\\s+(?:refund|rebate|settlement)\\b)",
       "type" : "deny"
     },
     {
@@ -447,7 +479,7 @@
       "folder" : "junk",
       "matching" : "regex",
       "target" : "body",
-      "text" : "\\b(?:healthcare|medicaid|medicare)\\s+benefits?\\s+(?:expire|expiring|renewal\\s+deadline)\\b[^\\r\\n]{0,60}(?:https?://|(?:[a-z0-9-]+\\.)+[a-z]{2,})",
+      "text" : "\\b(?:healthcare|medicaid|medicare)\\s+benefits?\\s+(?:expire|expiring|renewal\\s+deadline)\\b[\\s\\S]{0,60}(?:https?://|(?:[a-z0-9-]+\\.)+[a-z]{2,})",
       "type" : "deny"
     },
     {
@@ -455,7 +487,7 @@
       "folder" : "junk",
       "matching" : "regex",
       "target" : "body",
-      "text" : "\\b(?:power|electricity|water|gas|utility)\\b[^\\r\\n]{0,50}\\b(?:shut-?off|disconnect(?:ed|ion))\\b[^\\r\\n]{0,50}\\b(?:technician\\s+(?:is\\s+)?en\\s+route|pay\\s+now\\s+to\\s+stop|prepaid\\s+card|moneypak|gift\\s*cards?)\\b",
+      "text" : "\\b(?:power|electricity|water|gas|utility)\\b[\\s\\S]{0,50}\\b(?:shut-?off|disconnect(?:ed|ion))\\b[\\s\\S]{0,50}\\b(?:technician\\s+(?:is\\s+)?en\\s+route|pay\\s+now\\s+to\\s+stop|prepaid\\s+card|moneypak|gift\\s*cards?)\\b",
       "type" : "deny"
     },
     {
@@ -463,7 +495,7 @@
       "folder" : "junk",
       "matching" : "regex",
       "target" : "body",
-      "text" : "(?:\\b(?:coinbase|metamask|trust\\s*wallet|binance|kraken|phantom(?:\\s*wallet)?|wallet\\s*connect|dappradar|crypto\\.com)\\b[^\\r\\n]{0,50}\\b(?:unauthorized|withdrawal|security\\s+alert|seed\\s+phrase|verify\\s+your\\s+wallet|blocked|suspended|login\\s+attempt|kyc\\s+required|dapp)\\b|\\b(?:unauthorized\\s+withdrawal|suspicious\\s+activity)\\b[^\\r\\n]{0,50}\\b(?:coinbase|metamask|trust\\s*wallet|binance|kraken|phantom|crypto|btc|eth)\\b)",
+      "text" : "(?:\\b(?:coinbase|metamask|trust\\s*wallet|binance|kraken|phantom(?:\\s*wallet)?|wallet\\s*connect|dappradar|crypto\\.com)\\b[\\s\\S]{0,50}\\b(?:unauthorized|withdrawal|security\\s+alert|seed\\s+phrase|verify\\s+your\\s+wallet|blocked|suspended|login\\s+attempt|kyc\\s+required|dapp)\\b|\\b(?:unauthorized\\s+withdrawal|suspicious\\s+activity)\\b[\\s\\S]{0,50}\\b(?:coinbase|metamask|trust\\s*wallet|binance|kraken|phantom|crypto|btc|eth)\\b)",
       "type" : "deny"
     },
     {
@@ -471,7 +503,7 @@
       "folder" : "junk",
       "matching" : "regex",
       "target" : "body",
-      "text" : "\\b(?:ledger|trezor|keystone|tangem)\\b[^\\r\\n]{0,50}\\b(?:firmware|synchroniz|vulnerability|hardware\\s+wallet|breach|seed\\s+phrase|compromised)\\b",
+      "text" : "\\b(?:ledger|trezor|keystone|tangem)\\b[\\s\\S]{0,50}\\b(?:firmware|synchroniz|vulnerability|hardware\\s+wallet|breach|seed\\s+phrase|compromised)\\b",
       "type" : "deny"
     },
     {
@@ -479,7 +511,7 @@
       "folder" : "junk",
       "matching" : "regex",
       "target" : "body",
-      "text" : "\\b(?:apple\\s+pay|apple(?:[-_]?wallet)?|google\\s+(?:pay|wallet))\\b[^\\r\\n]{0,50}\\b(?:suspended|declined|unverified|restricted|re-?activate|deactivated|update\\s+(?:your\\s+)?(?:card|credentials|wallet))\\b[^\\r\\n]{0,60}(?:https?://|(?:[a-z0-9-]+\\.)+[a-z]{2,})",
+      "text" : "\\b(?:apple\\s+pay|apple(?:[-_]?wallet)?|google\\s+(?:pay|wallet))\\b[\\s\\S]{0,50}\\b(?:suspended|declined|unverified|restricted|re-?activate|deactivated|update\\s+(?:your\\s+)?(?:card|credentials|wallet))\\b[\\s\\S]{0,60}(?:https?://|(?:[a-z0-9-]+\\.)+[a-z]{2,})",
       "type" : "deny"
     },
     {
@@ -511,7 +543,7 @@
       "folder" : "junk",
       "matching" : "regex",
       "target" : "body",
-      "text" : "\\b(?:claim\\s+your\\s+(?:reward|prize|gift\\s+card|voucher|bonus)|unclaimed\\s+(?:reward|prize))\\b",
+      "text" : "\\b(?:claim\\s+(?:your\\s+)?(?:exclusive\\s+|pending\\s+|unclaimed\\s+)?(?:\\$\\s*\\d+\\s+)?(?:reward|prize|gift\\s*card|voucher|bonus)|unclaimed\\s+[a-z0-9&'-]*\\s*(?:reward|prize|voucher)|survey\\s+winner\\b[\\s\\S]{0,30}\\b(?:claim|gift\\s*card))\\b",
       "type" : "deny"
     },
     {
@@ -527,7 +559,7 @@
       "folder" : "junk",
       "matching" : "regex",
       "target" : "body",
-      "text" : "(?:\\b(?:send|give|text|tell|forward|share)\\s+(?:me\\s+)?(?:the|that|your)?\\s*(?:(?:\\d|six)[-\\s]*digit\\s*(?:verification|security|confirmation|login|auth|otp)?|(?:verification|security|confirmation|login|auth|otp)\\s*(?:(?:\\d|six)[-\\s]*digit)?|(?:google|apple|whatsapp|telegram|snapchat))\\s*(?:code|pin|passcode)\\b|\\b(?:sent\\s+(?:you\\s+)?(?:a\\s+)?(?:(?:\\d|six)[-\\s]*digit|verification)\\s*(?:code|pin)|verify\\s+(?:that\\s+)?you('re|\\s+are)\\s+real)\\b[^\\r\\n]{0,70}\\b(?:send|give|text|tell|forward|share)\\s+(?:me\\s+)?(?:it|the\\s+(?:code|pin))\\b|\\b(?:text\\s+(?:it\\s+)?back\\s+to\\s+me|read\\s+(?:it\\s+)?back\\s+to\\s+me|forward\\s+(?:me\\s+)?the\\s+(?:code|pin))\\b)",
+      "text" : "(?:\\b(?:send|give|text|tell|forward|share)\\s+(?:me\\s+)?(?:the|that|your)?\\s*(?:(?:\\d|six)[-\\s]*digit\\s*(?:verification|security|confirmation|login|auth|otp)?|(?:verification|security|confirmation|login|auth|otp)\\s*(?:(?:\\d|six)[-\\s]*digit)?|(?:google|apple|whatsapp|telegram|snapchat))\\s*(?:code|pin|passcode)\\b|\\b(?:sent\\s+(?:you\\s+)?(?:a\\s+)?(?:(?:\\d|six)[-\\s]*digit|verification)\\s*(?:code|pin)|verify\\s+(?:that\\s+)?you('re|\\s+are)\\s+real)\\b[\\s\\S]{0,70}\\b(?:send|give|text|tell|forward|share)\\s+(?:me\\s+)?(?:it|the\\s+(?:code|pin))\\b|\\b(?:text\\s+(?:it\\s+)?back\\s+to\\s+me|read\\s+(?:it\\s+)?back\\s+to\\s+me|forward\\s+(?:me\\s+)?the\\s+(?:code|pin))\\b)",
       "type" : "deny"
     },
     {
@@ -535,7 +567,7 @@
       "folder" : "junk",
       "matching" : "regex",
       "target" : "body",
-      "text" : "\\b(?:keto\\s+gummies|ozempic\\s+alternative|weight\\s+loss\\s+miracle|cbd\\s+gummies|dr\\.?\\s*oz\\s+endorsed|oprah\\s+weight\\s+loss)\\b",
+      "text" : "\\b(?:keto\\s+gummies|ozempic\\s+alternative|weight\\s+loss\\s+miracle|cbd\\s+gummies|dr\\.?\\s*oz\\s+endorsed|oprah\\s+weight\\s+loss|(?:drop|lose)\\s+\\d+\\s*(?:lbs|pounds|kilos)\\s+in\\s+\\d+\\s*days|(?:melt|burn)\\s+(?:belly\\s+)?fat\\b[\\s\\S]{0,30}\\b(?:formula|supplement|pill|trick|ritual))\\b",
       "type" : "deny"
     },
     {
@@ -639,7 +671,7 @@
       "folder" : "promotion",
       "matching" : "regex",
       "target" : "body",
-      "text" : "\\buse\\s+(?:promo|discount|coupon)\\s+code\\b|\\buse\\s+code\\s+[A-Za-z0-9_-]+\\b[^\\r\\n]{0,40}\\b(?:at\\s+checkout|for\\s+\\$?\\d+|off|to\\s+save|discount|free\\s+shipping)\\b",
+      "text" : "\\buse\\s+(?:promo|discount|coupon)\\s+code\\b|\\buse\\s+code\\s+[A-Za-z0-9_-]+\\b[\\s\\S]{0,40}\\b(?:at\\s+checkout|for\\s+\\$?\\d+|off|to\\s+save|discount|free\\s+shipping)\\b",
       "type" : "deny"
     },
     {
@@ -679,7 +711,7 @@
       "folder" : "promotion",
       "matching" : "regex",
       "target" : "body",
-      "text" : "\\b(?:(?:storefront|site|store|access)\\s+password\\s*:\\s*[a-z0-9_-]+|(?:access\\s+code|passcode)\\s*:\\s*[a-z0-9_-]+|drop\\s+is\\s+live|capsule\\s+\\d+\\s+out\\s+now|(?:collection|capsule|merch|jacket|hoodie|sweatpants|sneakers?|drop)?\\s*out\\s+now|don'?t\\s+sleep\\b[^\\r\\n]{0,40}\\b(?:on\\s+this\\s+drop|on\\s+the\\s+drop|cop\\s+now|restock|merch|collection)\\b|cop\\s+now|secure\\s+your\\s+size)\\b",
+      "text" : "\\b(?:(?:storefront|site|store|access)\\s+password\\s*:\\s*[a-z0-9_-]+|(?:access\\s+code|passcode)\\s*:\\s*[a-z0-9_-]+|drop\\s+is\\s+live|capsule\\s+\\d+\\s+out\\s+now|(?:collection|capsule|merch|jacket|hoodie|sweatpants|sneakers?|drop)?\\s*out\\s+now|don'?t\\s+sleep\\b[\\s\\S]{0,40}\\b(?:on\\s+this\\s+drop|on\\s+the\\s+drop|cop\\s+now|restock|merch|collection)\\b|cop\\s+now|secure\\s+your\\s+size)\\b",
       "type" : "deny"
     },
     {
@@ -711,7 +743,7 @@
       "folder" : "promotion",
       "matching" : "regex",
       "target" : "body",
-      "text" : "\\b(?:recurring\\s+(?:mktg|marketing|promo|automated)\\s+(?:txts|texts|messages)|via\\s+autodialer|consent\\s+not\\s+req(?:uired)?\\s+for\\s+purch(?:ase)?|(?:msg\\s+)?frequency\\s+(?:is\\s+recurring|varies|may\\s+vary))\\b|\\b(?:welcome\\s+to\\s+[a-z0-9\\s'-]+|thanks\\s+for\\s+(?:subscribing|joining))\\b[^\\r\\n]{0,50}\\b(?:msg\\s+(?:&|and)\\s+data|stop\\s+to\\s+(?:cancel|end|opt\\s*out))\\b",
+      "text" : "\\b(?:recurring\\s+(?:mktg|marketing|promo|automated)\\s+(?:txts|texts|messages)|via\\s+autodialer|consent\\s+not\\s+req(?:uired)?\\s+for\\s+purch(?:ase)?|(?:msg\\s+)?frequency\\s+(?:is\\s+recurring|varies|may\\s+vary))\\b|\\b(?:welcome\\s+to\\s+[a-z0-9\\s'-]+|thanks\\s+for\\s+(?:subscribing|joining))\\b[\\s\\S]{0,50}\\b(?:msg\\s+(?:&|and)\\s+data|stop\\s+to\\s+(?:cancel|end|opt\\s*out))\\b",
       "type" : "deny"
     },
     {
@@ -743,7 +775,15 @@
       "folder" : "promotion",
       "matching" : "regex",
       "target" : "body",
-      "text" : "\\b(?:stand\\s+with\\s+(?:trump|kamala|biden|vance)|support\\s+(?:trump|kamala|biden)|official\\s+(?:trump|kamala)\\s+(?:poll|survey|fund|campaign))\\b[^\\r\\n]{0,60}\\b(?:chip\\s+in|donate|contribution|fec\\s+deadline|match\\s+(?:your\\s+)?gift|reply\\s+stop)\\b|\\b(?:https?://)?(?:[a-z0-9-]+\\.)*truthsocial\\.(?:com|tv)\\b|\\bmessage\\s+from\\s+truth\\s*social\\b",
+      "text" : "\\b(?:get\\s+your\\s+free|try\\s+our\\s+free|#1\\s+rated\\s+[a-z\\s]+free)\\b[\\s\\S]{0,40}\\b(?:just\\s+pay|only\\s+pay)\\s+(?:shipping|s&h|postage)\\b",
+      "type" : "deny"
+    },
+    {
+      "case" : "insensitive",
+      "folder" : "promotion",
+      "matching" : "regex",
+      "target" : "body",
+      "text" : "\\b(?:stand\\s+with\\s+(?:trump|kamala|biden|vance)|support\\s+(?:trump|kamala|biden)|official\\s+(?:trump|kamala)\\s+(?:poll|survey|fund|campaign))\\b[\\s\\S]{0,60}\\b(?:chip\\s+in|donate|contribution|fec\\s+deadline|match\\s+(?:your\\s+)?gift|reply\\s+stop)\\b|\\b(?:https?://)?(?:[a-z0-9-]+\\.)*truthsocial\\.(?:com|tv)\\b|\\bmessage\\s+from\\s+truth\\s*social\\b",
       "type" : "deny"
     },
     {
