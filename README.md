@@ -1,30 +1,19 @@
-# simply-filter-rules
+![simply-filter-rules](https://github.com/ooqua/simply-filter-rules/releases/download/v1.1.1/IMG_4767.PNG)
 
 A regular-expression filter configuration for [Simply Filter SMS](https://github.com/adibendahan/SimplyFilterSMS-iOS) on iOS.
 
-The ruleset automatically identifies almost everything that isn't human while making sure personal texts remain in your Primary Inbox.
+The ruleset automatically identifies almost everything that isn't human while making sure personal texts remain in your Primary Inbox. Download the [***latest simply.sfsfilters***](https://github.com/ooqua/simply-filter-rules/releases/latest/download/simply.sfsfilters) to get started.
 
 ---
-
-## How Message Routing Works
-
-Apple's `IdentityLookup` framework does not permit third-party extensions to delete incoming messages. Instead, incoming SMS, MMS, and RCS messages from numbers not saved in your contacts are evaluated upon receipt and routed into dedicated system folders.
-
-### Folder Examples
-
-* Fake toll texts, fake delivery texts, weird letters, and other scam texts go to **Junk**.
-* Sales, deals, new clothes, and cart reminders go to **Promotions**.
-* Receipts, tracking, and delivery texts go to **Transactions**.
-* Texts from people you know, codes, and bank alerts stay in your **Primary Inbox**.
-
-**Pretty self-explanatory.**
 
 ## Requirements
 
 * An iPhone running iOS 16.6 or later.
 * [Simply Filter SMS](https://apps.apple.com/us/app/simply-filter-sms/id1603222959) installed from the App Store.
 
-## System Configuration
+## Installation
+
+### 1. System Configuration
 
 Apple requires third-party SMS filters to be explicitly granted permission in system settings.
 
@@ -35,9 +24,7 @@ Apple requires third-party SMS filters to be explicitly granted permission in sy
 3. Make sure **Screen Unknown Senders** (or **Filter Unknown Senders**) is turned **ON**.
 4. Under **Text Message Filter** (or **SMS Filtering**), select **Simply Filter SMS** and tap **Enable** when asked.
 
-## Installation
-
-### 1. Download and Import
+### 2. Download and Import
 
 Download the [**simply.sfsfilters**](https://github.com/ooqua/simply-filter-rules/releases/latest/download/simply.sfsfilters) file.
 
@@ -49,25 +36,37 @@ After downloading, import the file into Simply Filter SMS.
 * **Safari:** Tap the **Share** button and select **Simply Filter SMS**.
 * **Files:** Open Simply Filter SMS → **Filter Tools** → **Import Filters** → select `simply.sfsfilters`.
 
+### 3. Required In-App Settings
+
+Turn **Automatic Filtering (AI)** **OFF** and **Smart Filters (All)** **OFF**. The rules handle the filtering, including @ senders, unsafe websites and homograph letters.
+
 ## Upgrading to New Releases
 
 **Simply Filter SMS** automatically skips duplicate rules when importing. If an existing rule is changed, the app will not replace the old rule and will add the updated rule to the list.
 
-So to remove the old rules:
+So, to remove the old rules:
 
 1. Open **Simply Filter SMS**.
 2. Go to your custom rules.
 3. Tap and Slide to delete existing rules.
 4. Import the updated [**simply.sfsfilters**](https://github.com/ooqua/simply-filter-rules/releases/latest/download/simply.sfsfilters) file.
 
+---
 
-## Required In-App Settings
+## How Message Routing Works
 
-Turn **Automatic Filtering (AI)** OFF and **Smart Filters (All)** OFF. The rules handle the filtering, including @ senders, unsafe websites, and weird letters.
+Apple's `IdentityLookup` framework does not permit third-party extensions to delete incoming messages. Instead, incoming SMS, MMS and RCS messages from numbers not saved in your contacts are evaluated upon receipt and routed into dedicated system folders.
+
+### Folder Examples
+
+* Scams go to **Junk**.
+* Sales and deals go to **Promotions**.
+* Receipts and deliveries go to **Transactions**.
+* Personal messages, codes and bank alerts stay in your **Primary Inbox**.
 
 ---
 
-## Operating System Architecture & Constraints
+## How It Works And Limits 
 
 ### 1. The Contacts Exemption
 
@@ -77,13 +76,13 @@ Messages from people saved in your Contacts bypass third-party filtering and go 
 
 * **Junk:** Once a conversation goes to Junk, future messages from that sender will stay there.
 * **Deleting the conversation:** If you delete the conversation, a new message from the sender will be checked again as a new conversation.
-* **Promotions, Transactions, and Primary Inbox:** These folders are based on the most recent message.
+* **Promotions, Transactions and Primary Inbox:** These folders are based on the most recent message.
 
-**Important:** Do not reply to scam or smishing messages. If you reply, future messages from that number will bypass the filter.
+**Important:** Do not reply to scam messages. If you reply, future messages from that number will bypass the filter.
 
-### 3. SMS, MMS, and RCS vs. iMessage
+### 3. SMS, MMS and RCS vs. iMessage
 
-* **SMS, MMS, and RCS:** These messages can be checked by third-party filters.
+* **SMS, MMS and RCS:** These messages can be checked by third-party filters.
 * **iMessage:** Blue-bubble messages cannot be checked by third-party filters. Use **Report Junk** for unwanted iMessages.
 
 ### 4. On-Device Filtering
@@ -101,9 +100,9 @@ If the app says a message should be Junk but it went to your Primary Inbox, chec
 * **Blue bubble:** The message is an iMessage and cannot be checked by the filter.
 * **Saved contact:** Messages from contacts bypass filtering.
 * **You replied:** Future messages from that sender bypass filtering.
-* **Filter settings:** Make sure **Screen Unknown Senders** and **Simply Filter SMS** are turned ON under Settings → Apps → Messages → Unknown & Spam.
+* **Filter settings:** Make sure **Screen Unknown Senders** and **Simply Filter SMS** are turned **ON** under Settings → Apps → Messages → Unknown & Spam.
 
-If none of these apply, turn the filter OFF, wait a few seconds, then turn **Simply Filter SMS** back ON. You can also close Messages or restart your iPhone.
+If none of these apply, turn the filter **OFF**, wait a few seconds, then turn **Simply Filter SMS** back **ON**. You can also close Messages or restart your iPhone.
 
 ### A Bank Alert Was Sent to Junk
 
@@ -115,7 +114,7 @@ Messages like **“Hi, is this David?”** might not have enough information to 
 
 ### A Real Delivery Message Was Misclassified
 
-Messages from USPS, UPS, FedEx, and DHL using their official websites are allowed through. Delivery messages using unknown tracking websites might still be flagged if they look like scams.
+Messages from USPS, UPS, FedEx and DHL using their official websites are allowed through. Delivery messages using unknown tracking websites might still be flagged if they look like scams.
 
 ---
 
@@ -126,7 +125,7 @@ Messages from USPS, UPS, FedEx, and DHL using their official websites are allowe
 If a real message went to Junk or Promotions:
 
 1. Copy the message.
-2. Remove personal information like names, phone numbers, addresses, and account details.
+2. Remove personal information like names, phone numbers, addresses and account details.
 3. Open a GitHub issue with the message, the folder it went to, and who sent it.
 
 ### Scam Message Was Not Blocked
@@ -143,5 +142,4 @@ If a scam message reached your Primary Inbox:
 
 ## Disclaimer & License
 
-Please know that these rules will not catch every scam out there. Be careful with unknown messages; don't click links or share personal information unless you know the message is absolutely safe. This project uses the [MIT License](LICENSE).
-
+Know that these rules will not catch every scam out there. Be careful with unknown messages; don't click links or share personal information unless you know the message is absolutely safe. This project uses the [MIT License](LICENSE).
