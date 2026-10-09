@@ -1,6 +1,6 @@
 {
   "appVersion" : "3.1.5",
-  "exportedAt" : "2026-10-04T05:00:00Z",
+  "exportedAt" : "2026-10-10T14:30:00Z",
   "filters" : [
     {
       "case" : "insensitive",
@@ -31,7 +31,7 @@
       "folder" : "junk",
       "matching" : "regex",
       "target" : "body",
-      "text" : "[\\x{1D400}-\\x{1D7FF}]|[\\uFF01-\\uFF5E]{4,}|[\\u2460-\\u24FF]{4,}",
+      "text" : "[\\x{1D400}-\\x{1D7FF}]{4,}|[\\uFF01-\\uFF5E]{4,}|[\\u2460-\\u24FF]{4,}",
       "type" : "deny"
     },
     {
@@ -79,7 +79,7 @@
       "folder" : "junk",
       "matching" : "regex",
       "target" : "body",
-      "text" : "(?:https?://)?(?:[a-z0-9-]+\\.)*(?:cutt\\.ly|tinyurl\\.com|tiny\\.one|bit\\.ly|ow\\.ly|rb\\.gy|is\\.gd|rebrand\\.ly|t\\.co|tiny\\.cc|shorturl\\.at|dub\\.sh|dub\\.co|qr\\.codes|qrco\\.de|qr\\.de|s\\.id|clck\\.ru|v\\.gd|cleanuri\\.com|t\\.ly|shrtco\\.de|goo\\.su|cuty\\.io|kutt\\.it|bit\\.do|wa\\.me|v\\.ht|lnkd\\.in|lihi2?\\.me|lihi\\.(?:cc|io|biz)|onelink\\.me|b\\.link|page\\.link|short\\.gy|snip\\.ly|l\\.ead\\.me|qr-code\\.me|me-qr\\.com|flowcode\\.com|t2m\\.io|short\\.io|cutt\\.us|soo\\.gd|linktr\\.ee|chilp\\.it)(?:/[^\\s]*)?",
+      "text" : "\\b(?:https?://)?(?:[a-z0-9-]+\\.)*(?:cutt\\.ly|tinyurl\\.com|tiny\\.one|bit\\.ly|ow\\.ly|rb\\.gy|is\\.gd|rebrand\\.ly|t\\.co|tiny\\.cc|shorturl\\.at|dub\\.sh|dub\\.co|qr\\.codes|qrco\\.de|qr\\.de|s\\.id|clck\\.ru|v\\.gd|cleanuri\\.com|t\\.ly|shrtco\\.de|goo\\.su|cuty\\.io|kutt\\.it|bit\\.do|wa\\.me|v\\.ht|lnkd\\.in|lihi2?\\.me|lihi\\.(?:cc|io|biz)|onelink\\.me|b\\.link|page\\.link|short\\.gy|snip\\.ly|l\\.ead\\.me|qr-code\\.me|me-qr\\.com|flowcode\\.com|t2m\\.io|short\\.io|cutt\\.us|soo\\.gd|linktr\\.ee|chilp\\.it)(?:/[^\\s]*)?",
       "type" : "deny"
     },
     {
@@ -95,7 +95,7 @@
       "folder" : "junk",
       "matching" : "regex",
       "target" : "body",
-      "text" : "(?:https?://)?(?:[a-z0-9-]+\\.)+(?:vip|top|buzz|xyz|icu|lat|cfd|sbs|monster|pro|cam|link|store|shop|site|online|click|rest|work|cloud|zip|live|space|quest|fun|duckdns\\.org|hopto\\.org|zapto\\.org|ddns\\.net|trycloudflare\\.com|ngrok-free\\.app|loca\\.lt|serveo\\.net|pagekite\\.me|localxpose\\.io)(?:/[^\\s]*)?",
+      "text" : "\\b(?:https?://)?(?!(?:www\\.)?sq\\.link/)(?:[a-z0-9-]+\\.)+(?:vip|top|buzz|xyz|icu|lat|cfd|sbs|monster|pro|cam|link|store|shop|site|online|click|rest|work|cloud|zip|live|space|quest|fun|duckdns\\.org|hopto\\.org|zapto\\.org|ddns\\.net|trycloudflare\\.com|ngrok-free\\.app|loca\\.lt|serveo\\.net|pagekite\\.me|localxpose\\.io)(?::\\d{2,5}|/[^\\s]*)?(?::|/|\\b|$)",
       "type" : "deny"
     },
     {
@@ -127,7 +127,7 @@
       "folder" : "junk",
       "matching" : "regex",
       "target" : "body",
-      "text" : "\\b(?:contact|reach|email|write\\s+to|send\\s+(?:your\\s+)?(?:resume|cv|info)\\s+to)\\s+(?:us\\s+at\\s+|me\\s+at\\s+)?[A-Za-z0-9._%+-]+@(gmail|yahoo|hotmail|outlook|proton|icloud)\\.[a-z]{2,}\\b",
+      "text" : "\\b(?:contact|reach|write\\s+to|send\\s+(?:your\\s+)?(?:resume|cv|info)\\s+to)\\s+(?:us\\s+at\\s+|me\\s+at\\s+)?[A-Za-z0-9._%+-]+@(gmail|yahoo|hotmail|outlook|proton|icloud)\\.[a-z]{2,}\\b",
       "type" : "deny"
     },
     {
@@ -287,6 +287,14 @@
       "folder" : "junk",
       "matching" : "regex",
       "target" : "body",
+      "text" : "(?!(?:[\\s\\S]*?\\breply\\s+(?:yes|no|[12]|y|n)\\b))\\b(?:payment|charge|bill|subscription|invoice|account)\\b[\\s\\S]{0,150}\\b(?:suspend(?:ed)?|lock(?:ed)?|unauthorized|charg(?:ed|e)|review|intercepted)\\b[\\s\\S]{0,200}\\b(?:call|contact|dial|reach|support)\\b[\\s\\S]{0,50}\\+?1?[-.\\s]?\\(?\\d{3}\\)?[-.\\s]?\\d{3}[-.\\s]?\\d{4}\\b",
+      "type" : "deny"
+    },
+    {
+      "case" : "insensitive",
+      "folder" : "junk",
+      "matching" : "regex",
+      "target" : "body",
       "text" : "(?!(?:[\\s\\S]*?\\breply\\s+(?:yes|no|[12]|y|n)\\b))\\b(?:account\\s+(?:has\\s+been\\s+)?flagged\\s+for\\s+suspicious\\s+activity|unauthorized\\s+(?:charge|transaction|transfer)\\s+(?:detected|flagged))\\b[\\s\\S]{0,60}\\b(?:call\\s+(?:us|immediately|now|support)|dial)\\b",
       "type" : "deny"
     },
@@ -327,7 +335,7 @@
       "folder" : "junk",
       "matching" : "regex",
       "target" : "body",
-      "text" : "\\b(?:parking\\s+(?:enforcement|ticket|citation|violation|meter)|unpaid\\s+parking)\\b[\\s\\S]{0,50}(?:citation|settle|court|fine|pay|penalty|vehicle)[\\s\\S]{0,120}(?:https?://|(?:[a-z0-9-]+\\.)+[a-z]{2,})",
+      "text" : "\\b(?:parking\\s+(?:enforcement|ticket|citation|violation|meter)|unpaid\\s+(?:meter|parking))\\b[\\s\\S]{0,80}\\b(?:citation|settle|court|fine|pay|penalty|vehicle|violation|fee|booting|immobiliz\\w*)\\b[\\s\\S]{0,140}(?:https?://|(?:[a-z0-9-]+\\.)+[a-z]{2,})",
       "type" : "deny"
     },
     {
@@ -335,7 +343,7 @@
       "folder" : "junk",
       "matching" : "regex",
       "target" : "body",
-      "text" : "\\b(?:package|parcel|shipment|delivery|consignment|u\\.?\\s*s\\.?\\s*p\\.?\\s*s|u\\.?\\s*p\\.?\\s*s|f\\.?\\s*e\\.?\\s*d\\.?\\s*e\\.?\\s*x|d\\.?\\s*h\\.?\\s*l|evri|ontrac|lasership)\\b[\\s\\S]{0,70}\\b(?:held|halted|stopped|suspended|cancelled|undeliverable|cannot\\s+be\\s+delivered|unable\\s+to\\s+deliver|awaiting\\s+(?:action|confirmation|delivery)|incomplete\\s+address|incorrect\\s+address|invalid\\s+street|missing\\s+(?:apartment|unit|house|street|number)|confirm\\s+(?:your\\s+)?address|update\\s+(?:your\\s+)?address|redelivery)\\b[\\s\\S]{0,140}(?:https?://)?(?!(?:[a-z0-9-]+\\.)*(?:usps|ups|fedex|dhl)\\.com(?::|/|\\b|$))(?:[a-z0-9-]+\\.)+[a-z]{2,}",
+      "text" : "\\b(?:package|parcel|shipment|delivery|consignment|u\\.?\\s*s\\.?\\s*p\\.?\\s*s|u\\.?\\s*p\\.?\\s*s|f\\.?\\s*e\\.?\\s*d\\.?\\s*e\\.?\\s*x|d\\.?\\s*h\\.?\\s*l|evri|ontrac|lasership)\\b[\\s\\S]{0,100}\\b(?:held|halted|stopped|suspended|cancelled|undeliverable|(?:can|could)\\s*not\\s+be\\s+delivered|unable\\s+to\\s+deliver|awaiting\\s+(?:action|confirmation|delivery)|incomplet\\w*|incorrect\\s+(?:address|street(?:\\s+number)?)|invalid\\s+street|missing\\s+(?:apartment|unit|house|street|number)|confirm\\s+(?:your\\s+)?address|update\\s+(?:your\\s+)?address|redelivery)\\b[\\s\\S]{0,140}(?:(?:https?://)?(?!(?:[a-z0-9-]+\\.)*(?:usps|ups|fedex|dhl)\\.com(?::|/|\\b|$))(?:[a-z0-9-]+\\.)+[a-z]{2,}|\\b(?:reply\\s+(?:with\\s+)?(?:y|yes|1)|returned\\s+to\\s+sender)\\b)",
       "type" : "deny"
     },
     {
@@ -487,7 +495,7 @@
       "folder" : "junk",
       "matching" : "regex",
       "target" : "body",
-      "text" : "\\b(?:power|electricity|water|gas|utility)\\b[\\s\\S]{0,50}\\b(?:shut-?off|disconnect(?:ed|ion))\\b[\\s\\S]{0,50}\\b(?:technician\\s+(?:is\\s+)?en\\s+route|pay\\s+now\\s+to\\s+stop|prepaid\\s+card|moneypak|gift\\s*cards?)\\b",
+      "text" : "\\b(?:power|electricity|water|gas|utility)\\b[\\s\\S]{0,60}\\b(?:shut-?off|disconnect(?:ed|ion))\\b[\\s\\S]{0,100}\\b(?:technician\\s+(?:is\\s+)?en\\s+route|pay\\s+now\\s+to\\s+stop|prepaid\\s+card|moneypak|gift\\s*cards?|call\\s+(?:immediately|now|support|\\+?1[-\\s.]?\\(?\\d{3}\\)?)|keep\\s+(?:your\\s+)?(?:power|service)\\s+on)\\b",
       "type" : "deny"
     },
     {
@@ -559,7 +567,7 @@
       "folder" : "junk",
       "matching" : "regex",
       "target" : "body",
-      "text" : "(?:\\b(?:send|give|text|tell|forward|share)\\s+(?:me\\s+)?(?:the|that|your)?\\s*(?:(?:\\d|six)[-\\s]*digit\\s*(?:verification|security|confirmation|login|auth|otp)?|(?:verification|security|confirmation|login|auth|otp)\\s*(?:(?:\\d|six)[-\\s]*digit)?|(?:google|apple|whatsapp|telegram|snapchat))\\s*(?:code|pin|passcode)\\b|\\b(?:sent\\s+(?:you\\s+)?(?:a\\s+)?(?:(?:\\d|six)[-\\s]*digit|verification)\\s*(?:code|pin)|verify\\s+(?:that\\s+)?you('re|\\s+are)\\s+real)\\b[\\s\\S]{0,70}\\b(?:send|give|text|tell|forward|share)\\s+(?:me\\s+)?(?:it|the\\s+(?:code|pin))\\b|\\b(?:text\\s+(?:it\\s+)?back\\s+to\\s+me|read\\s+(?:it\\s+)?back\\s+to\\s+me|forward\\s+(?:me\\s+)?the\\s+(?:code|pin))\\b)",
+      "text" : "(?:\\b(?:send|give|text|tell|forward|share)\\s+(?:me|us|to\\s+me|with\\s+me)\\s+(?:the|that|your)?\\s*(?:(?:\\d|six)[-\\s]*digit\\s*(?:verification|security|confirmation|login|auth|otp)?|(?:verification|security|confirmation|login|auth|otp)\\s*(?:(?:\\d|six)[-\\s]*digit)?|(?:google|apple|whatsapp|telegram|snapchat))\\s*(?:code|pin|passcode)\\b|\\b(?:sent\\s+(?:you\\s+)?(?:a\\s+)?(?:(?:\\d|six)[-\\s]*digit|verification)\\s*(?:code|pin)|verify\\s+(?:that\\s+)?you('re|\\s+are)\\s+real)\\b[\\s\\S]{0,70}\\b(?:send|give|text|tell|forward|share)\\s+(?:me\\s+)?(?:it|the\\s+(?:code|pin))\\b|\\b(?:text\\s+(?:it\\s+)?back\\s+to\\s+me|read\\s+(?:it\\s+)?back\\s+to\\s+me|forward\\s+(?:me\\s+)?the\\s+(?:code|pin))\\b)",
       "type" : "deny"
     },
     {
@@ -583,7 +591,7 @@
       "folder" : "transaction",
       "matching" : "regex",
       "target" : "body",
-      "text" : "\\b(?:your\\s+)?(?:order|package|item|shipment|parcel)\\s+(?:has\\s+)?shipped\\b",
+      "text" : "(?!(?:[\\s\\S]*?\\b(?:deduct|call\\s+(?:to\\s+cancel|us|support)|if\\s+you\\s+did\\s+not)\\b))\\b(?:your\\s+)?(?:order|package|item|shipment|parcel|delivery)\\b[\\s\\S]{0,40}\\b(?:has\\s+(?:been\\s+)?shipped|was\\s+shipped|is\\s+(?:being\\s+delivered|out\\s+for\\s+delivery|on\\s+the\\s+way|scheduled\\s+for\\s+delivery)|arrives?\\s+(?:today|tomorrow|monday|tuesday|wednesday|thursday|friday|saturday|sunday|\\b\\w+\\b\\s+\\d{1,2}))\\b",
       "type" : "deny"
     },
     {
@@ -591,7 +599,7 @@
       "folder" : "transaction",
       "matching" : "regex",
       "target" : "body",
-      "text" : "\\b(?:your\\s+)?(?:order|package|item|shipment|parcel|delivery)\\s+is\\s+out\\s+for\\s+delivery\\b",
+      "text" : "\\b(?:package|parcel|shipment|delivery|order)\\b[\\s\\S]{0,40}\\b(?:was\\s+dropped\\s+off|was\\s+delivered|has\\s+been\\s+delivered|delivered\\s+(?:to|near)|handed\\s+(?:directly\\s+|safely\\s+)?to\\s+(?:a\\s+)?resident|left\\s+(?:at|near)|ready\\s+for\\s+(?:store\\s+|locker\\s+)?pickup)\\b",
       "type" : "deny"
     },
     {
@@ -599,7 +607,7 @@
       "folder" : "transaction",
       "matching" : "regex",
       "target" : "body",
-      "text" : "\\btracking\\s+(?:number|#)\\s*:\\s*[a-z0-9_-]+\\b",
+      "text" : "\\b(?:ups|fedex|usps|dhl)\\b[\\s\\S]{0,25}\\b(?:sms\\s+tracking|tracking\\s+updates?|delivery\\s+manager)\\b[\\s\\S]{0,35}\\breply\\s+yes\\b",
       "type" : "deny"
     },
     {
@@ -607,7 +615,7 @@
       "folder" : "transaction",
       "matching" : "regex",
       "target" : "body",
-      "text" : "\\border\\s+confirmation\\s*:\\s*[a-z0-9#_-]+\\b",
+      "text" : "\\b(?:tracking\\s*(?:number|#)?\\s*:\\s*[a-z0-9_-]+|order\\s+(?:confirmation\\s*:\\s*#?[a-z0-9_-]+|#\\s*\\d+\\s+(?:confirmed|received))|track\\s+(?:the\\s+status|your\\s+(?:order|package|delivery))\\s+(?:at|via)?\\s*https?://(?:[a-z0-9-]+\\.)*(?:drd\\.sh|ubr\\.to|inst\\.cr|ups\\.com|fedex\\.com|usps\\.com|dhl\\.com|amazon\\.com|target\\.com|walmart\\.com)/)",
       "type" : "deny"
     },
     {
@@ -615,7 +623,7 @@
       "folder" : "transaction",
       "matching" : "regex",
       "target" : "body",
-      "text" : "\\breceipt\\s+for\\s+(?:your\\s+)?payment\\b",
+      "text" : "\\b(?:driver|dasher|shopper|courier)\\s+(?:is\\s+arriving|is\\s+\\d+\\s+min|has\\s+arrived|is\\s+approaching|has\\s+(?:started\\s+shopping|picked\\s+up))\\b|\\b(?:order\\s+has\\s+been\\s+picked\\s+up|delivery\\s+is\\s+at\\s+your\\s+door)\\b|\\b(?:doordash|ubereats|instacart|grubhub)\\s+(?:order|delivery)\\b",
       "type" : "deny"
     },
     {
@@ -623,7 +631,7 @@
       "folder" : "transaction",
       "matching" : "regex",
       "target" : "body",
-      "text" : "\\b(?:driver\\s+(?:is\\s+arriving|is\\s+\\d+\\s+min|has\\s+arrived)|order\\s+has\\s+been\\s+picked\\s+up|delivery\\s+is\\s+at\\s+your\\s+door)\\b",
+      "text" : "\\b(?:appointment|dental|exam|cleaning|consultation)\\b[\\s\\S]{0,35}\\b(?:reminder|scheduled|confirmed|rescheduled)\\b|\\b(?:rx\\s*#?\\d+|prescription)\\b[\\s\\S]{0,30}\\bready\\s+for\\s+pickup\\b|\\b(?:lab\\s+results?\\b[\\s\\S]{0,40}\\bready|(?:your\\s+)?table\\s+(?:at\\s+[a-z0-9\\s'-]+\\s+)?is\\s+ready\\b[\\s\\S]{0,30}\\b(?:host|stand|waitlist|party)|on\\s+the\\s+(?:check-in|wait)\\s*list)\\b",
       "type" : "deny"
     },
     {
@@ -631,7 +639,7 @@
       "folder" : "transaction",
       "matching" : "regex",
       "target" : "body",
-      "text" : "\\b(?:doordash|ubereats|instacart|grubhub)\\s+order\\b",
+      "text" : "\\b(?:receipt\\s+for\\s+(?:your\\s+)?payment|thank\\s+you\\s+for\\s+your\\s+payment\\s+of\\s+\\$?\\d+)\\b|\\b(?:square:\\s+you\\s+spent\\s+\\$?\\d+|apple\\s+card:\\s+\\$?\\d+\\s+charged)\\b|\\b(?:cash\\s+app|venmo):\\s+[a-z0-9\\s'-]+\\s+(?:sent|paid)\\s+(?:you\\s+)?\\$?\\d+\\b|\\bhttps?://sq\\.link/r/[a-z0-9_-]+\\b",
       "type" : "deny"
     },
     {
@@ -639,7 +647,7 @@
       "folder" : "transaction",
       "matching" : "regex",
       "target" : "body",
-      "text" : "\\b(?:gate\\s+change|flight\\s+(?:delayed|cancelled|boarding)|boarding\\s+pass|hotel\\s+check-in|digital\\s+key|room\\s+key|car\\s+rental\\s+(?:confirmation|reservation))\\b",
+      "text" : "\\b(?:gate\\s+change|flight\\s+(?:delayed|cancelled|boarding)|boarding\\s+pass|hotel\\s+(?:check-in|room\\s+key)|(?:digital|mobile)\\s+(?:room\\s+)?key|car\\s+rental\\s+(?:confirmation|reservation))\\b",
       "type" : "deny"
     },
     {
@@ -647,15 +655,7 @@
       "folder" : "transaction",
       "matching" : "regex",
       "target" : "body",
-      "text" : "\\b(?:autopay\\s+(?:scheduled|processed|confirmation)|billing\\s+statement\\s+is\\s+ready|service\\s+outage\\s+reported|power\\s+restored)\\b",
-      "type" : "deny"
-    },
-    {
-      "case" : "insensitive",
-      "folder" : "transaction",
-      "matching" : "regex",
-      "target" : "body",
-      "text" : "\\b(?:prescription\\s+is\\s+ready\\s+for\\s+pickup|technician\\s+arrival\\s+window|vehicle\\s+service\\s+(?:completed|scheduled))\\b",
+      "text" : "\\b(?:autopay\\s+(?:scheduled|processed|confirmation)|billing\\s+statement\\s+is\\s+ready|service\\s+outage\\s+reported|power\\s+restored|technician\\s+arrival\\s+window|vehicle\\s+service\\s+(?:completed|scheduled))\\b",
       "type" : "deny"
     },
     {
@@ -711,7 +711,7 @@
       "folder" : "promotion",
       "matching" : "regex",
       "target" : "body",
-      "text" : "\\b(?:(?:storefront|site|store|access)\\s+password\\s*:\\s*[a-z0-9_-]+|(?:access\\s+code|passcode)\\s*:\\s*[a-z0-9_-]+|drop\\s+is\\s+live|capsule\\s+\\d+\\s+out\\s+now|(?:collection|capsule|merch|jacket|hoodie|sweatpants|sneakers?|drop)?\\s*out\\s+now|don'?t\\s+sleep\\b[\\s\\S]{0,40}\\b(?:on\\s+this\\s+drop|on\\s+the\\s+drop|cop\\s+now|restock|merch|collection)\\b|cop\\s+now|secure\\s+your\\s+size)\\b",
+      "text" : "\\b(?:(?:storefront|site|store|access)\\s+password\\s*:\\s*[a-z0-9_-]+|(?:access\\s+code|passcode)\\s*:\\s*[a-z0-9_-]+|drop\\s+is\\s+live|capsule\\s+\\d+\\s+out\\s+now|(?:collection|capsule|merch|jacket|hoodie|sweatpants|sneakers?|drop)\\s+out\\s+now|don'?t\\s+sleep\\b[\\s\\S]{0,40}\\b(?:on\\s+this\\s+drop|on\\s+the\\s+drop|cop\\s+now|restock|merch|collection)\\b|cop\\s+now|secure\\s+your\\s+size)\\b",
       "type" : "deny"
     },
     {
@@ -791,7 +791,7 @@
       "folder" : "promotion",
       "matching" : "regex",
       "target" : "body",
-      "text" : "\\b(?:patriot|fellow\\s+american|critical\\s+deadline|we\\s+are\\s+falling\\s+behind|i'm\\s+begging|chip\\s+in\\s+to\\s+defend|end\\s+of\\s+month\\s+goal|save\\s+america|grassroots|maga|dnc|gop|pac\\s+match|election\\s+deadline|\\d{2,4}%\\s+match|midnight\\s+deadline|stand\\s+with\\s+trump|patriot\\s+(?:package|pass|tier|network))\\b",
+      "text" : "\\b(?:fellow\\s+american|critical\\s+deadline|we\\s+are\\s+falling\\s+behind|i'm\\s+begging|chip\\s+in\\s+to\\s+defend|end\\s+of\\s+month\\s+goal|save\\s+america|grassroots|maga|dnc|gop|pac\\s+match|election\\s+deadline|\\d{2,4}%\\s+match|midnight\\s+deadline|stand\\s+with\\s+trump|patriot\\s+(?:package|pass|tier|network|donor|fund))\\b",
       "type" : "deny"
     },
     {
@@ -799,7 +799,7 @@
       "folder" : "promotion",
       "matching" : "regex",
       "target" : "body",
-      "text" : "\\b(?:left\\s+something\\s+in\\s+your\\s+cart|your\\s+cart\\s+is\\s+waiting|items?\\s+waiting\\s+in\\s+your\\s+cart|still\\s+thinking\\s+about\\s+it)\\b",
+      "text" : "\\b(?:left\\s+(?:something|items?|a\\s+few\\s+items?)\\s+(?:behind|in\\s+your\\s+cart)|your\\s+(?:cart|bag)\\s+is\\s+(?:waiting|saved)|items?\\s+waiting\\s+in\\s+your\\s+cart|still\\s+thinking\\s+about\\s+it)\\b",
       "type" : "deny"
     },
     {
