@@ -1,6 +1,11 @@
 {
   "appVersion" : "3.1.5",
   "exportedAt" : "2026-11-08T08:00:00Z",
+  "name" : "Regex Rules",
+  "description" : "Sorts scams, promotions and receipts into their folders, and keeps personal texts in your inbox.",
+  "author" : "Ooqua",
+  "homepage" : "https://github.com/ooqua/simply-filter-rules",
+  "locale" : "en-US",
   "forceClearBeforeImport" : [
     "deny"
   ],
